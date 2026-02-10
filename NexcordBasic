@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>White House | Nexcord Basic</title>
+    <link rel="icon" type="image/png" href="wh.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&amp;family=Roboto+Mono:wght@300;400;500;700&amp;display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --pure-black: #000000;
+            --black-1: #080808;
+            --black-2: #111111;
+            --black-3: #151515;
+            --accent-color: #ffffff;
+            --accent-glow: rgba(255, 255, 255, 0.7);
+            --text-primary: #ffffff;
+            --text-secondary: #bbbbbb;
+            --discord-blue: #5865F2;
+            --discord-glow: rgba(88, 101, 242, 0.7);
+            --red-glow: rgba(255, 50, 50, 0.5);
+            --red-color: #ff3333;
+            --gold-glow: rgba(255, 215, 0, 0.7);
+            --white-glow: rgba(255, 255, 255, 0.7);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto Mono', monospace;
+            background-color: var(--pure-black);
+            color: var(--text-primary);
+            overflow-x: hidden;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--black-2);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--accent-color);
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--accent-glow);
+            box-shadow: 0 0 10px var(--accent-glow);
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 5%;
+            background-color: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(15px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            height: 70px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: var(--text-primary);
+            text-decoration: none;
+        }
+
+        .logo-img {
+            width: 45px;
+            height: 45px;
+            margin-right: 10px;
+            filter: drop-shadow(0 0 3px black);
+        }
+
+        .desktop-nav {
+            display: flex;
+            gap: 25px;
+        }
+
+        .desktop-nav a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            padding: 8px 12px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .desktop-nav a:hover {
+            color: var(--accent-color);
+            text-shadow: 0 0 8px var(--accent-glow);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 1.8rem;
+            cursor: pointer;
+            z-index: 1001;
+            padding: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu-btn:hover {
+            color: var(--accent-color);
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 70px 5% 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(255, 50, 50, 0.03) 0%, transparent 40%),
+                radial-gradient(circle at 80% 70%, rgba(255, 50, 50, 0.02) 0%, transparent 40%),
+                radial-gradient(circle at 40% 80%, rgba(255, 50, 50, 0.02) 0%, transparent 40%);
+            z-index: -1;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            color: var(--red-color);
+            text-shadow: 0 0 20px var(--red-glow);
+        }
+
+        .hero h2 {
+            font-size: 2rem;
+            margin-bottom: 30px;
+            color: var(--text-primary);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin-bottom: 40px;
+            color: var(--text-secondary);
+        }
+
+        .price-tag {
+            font-size: 2.5rem;
+            color: var(--red-color);
+            text-shadow: 0 0 15px var(--red-glow);
+            margin: 20px 0;
+            font-weight: 900;
+        }
+
+        .tool-details {
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 50px;
+            background-color: #080808;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 50, 50, 0.5);
+            box-shadow: 0 0 40px rgba(255, 50, 50, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tool-details::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, transparent, var(--red-color), transparent);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .feature-card {
+            background-color: #111111;
+            padding: 25px;
+            border-radius: 10px;
+            border-left: 4px solid var(--red-color);
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(255, 50, 50, 0.1);
+        }
+
+        .feature-card i {
+            font-size: 2rem;
+            color: var(--red-color);
+            margin-bottom: 15px;
+            text-shadow: 0 0 10px var(--red-glow);
+        }
+
+        .button-container {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 15px 40px;
+            background: transparent;
+            color: var(--red-color);
+            border: 2px solid var(--red-color);
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button:hover {
+            background-color: rgba(255, 50, 50, 0.1);
+            box-shadow: 0 0 30px var(--red-glow);
+            transform: translateY(-3px);
+        }
+
+        .back-button {
+            display: inline-block;
+            padding: 15px 40px;
+            background: transparent;
+            color: var(--accent-color);
+            border: 2px solid var(--accent-color);
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: all 0.4s ease;
+        }
+
+        .back-button:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0 30px var(--white-glow);
+            transform: translateY(-3px);
+        }
+
+        .info-box {
+            background-color: rgba(255, 50, 50, 0.1);
+            border-left: 4px solid var(--red-color);
+            padding: 20px;
+            margin: 30px 0;
+            border-radius: 5px;
+        }
+
+        footer {
+            background-color: var(--black-2);
+            padding: 60px 5% 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: var(--text-primary);
+            margin-bottom: 20px;
+        }
+
+        .footer-logo-img {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+            filter: drop-shadow(0 0 3px black);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .matrix-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -2;
+            opacity: 0.02;
+        }
+
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+            
+            .desktop-nav {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                padding-top: 80px;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero h2 {
+                font-size: 1.5rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .tool-details {
+                padding: 30px 20px;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .button-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .cta-button, .back-button {
+                width: 100%;
+                max-width: 300px;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                padding-top: 70px;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .price-tag {
+                font-size: 2rem;
+            }
+            
+            .navbar {
+                padding: 8px 3%;
+            }
+        }
+
+        canvas {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <canvas class="matrix-bg" id="matrixCanvas"></canvas>
+
+    <nav class="navbar">
+        <a href="/" class="logo">
+            <img src="wh.png" alt="White House Logo" class="logo-img">
+            WHITE HOUSE
+        </a>
+        
+        <div class="desktop-nav">
+            <a href="/">Home</a>
+            <a href="https://discord.gg/DbNQgMWJ8G" target="_blank">Join Discord</a>
+        </div>
+        
+        <button class="mobile-menu-btn" id="mobileMenuBtn">
+            <i class="fas fa-bars"></i>
+        </button>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <h1>Nexcord Basic</h1>
+        <h2>Free Discord Nuker Tool</h2>
+        <p>The free version of Nexcord - A powerful Discord nuker tool made by the owner of White House. Perfect for beginners and basic server management.</p>
+        
+        <div class="price-tag">FREE</div>
+        
+        <div class="tool-details">
+            <h2>About Nexcord Basic</h2>
+            <p>Nexcord Basic is the free version of our popular Discord nuker tool. It provides essential features for server management, moderation, and administration while maintaining high performance and reliability.</p>
+            
+            <div class="info-box">
+                <p><i class="fas fa-info-circle"></i> <strong>Note:</strong> This is the FREE version. For advanced features, check out <strong>Nexcord Plus</strong>.</p>
+            </div>
+            
+            <h3>Key Features</h3>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <i class="fas fa-bolt"></i>
+                    <h4>Fast Performance</h4>
+                    <p>Optimized for speed and efficiency in all operations</p>
+                </div>
+                
+                <div class="feature-card">
+                    <i class="fas fa-shield-alt"></i>
+                    <h4>Basic Security</h4>
+                    <p>Essential security features for server protection</p>
+                </div>
+                
+                <div class="feature-card">
+                    <i class="fas fa-tools"></i>
+                    <h4>Core Tools</h4>
+                    <p>All basic tools needed for server management</p>
+                </div>
+                
+                <div class="feature-card">
+                    <i class="fas fa-sync-alt"></i>
+                    <h4>Regular Updates</h4>
+                    <p>Free updates with bug fixes and improvements</p>
+                </div>
+                
+                <div class="feature-card">
+                    <i class="fas fa-users"></i>
+                    <h4>User Management</h4>
+                    <p>Basic user and role management tools</p>
+                </div>
+                
+                <div class="feature-card">
+                    <i class="fas fa-comments"></i>
+                    <h4>Channel Tools</h4>
+                    <p>Essential channel creation and management</p>
+                </div>
+            </div>
+            
+            <h3>How to Get It</h3>
+            <p>Nexcord Basic is available for free on our Discord server. Join our community to download and get support.</p>
+            
+            <div class="button-container">
+                <a href="https://discord.gg/DbNQgMWJ8G" target="_blank" class="cta-button">
+                    <i class="fab fa-discord"></i> DOWNLOAD ON DISCORD
+                </a>
+                
+                <a href="/" class="back-button">
+                    <i class="fas fa-arrow-left"></i> BACK TO HOME
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-logo">
+            <img src="wh.png" alt="White House Logo" class="footer-logo-img">
+            WHITE HOUSE
+        </div>
+        <p style="color: var(--text-secondary); margin-bottom: 20px; max-width: 600px; margin-left: auto; margin-right: auto;">
+            Professional Doxbin group providing advanced digital tools and utilities
+        </p>
+        <div style="display: flex; gap: 15px; justify-content: center; margin-bottom: 20px;">
+            <a href="https://github.com/danexoo/" target="_blank" style="color: var(--text-secondary); font-size: 1.2rem; transition: all 0.3s ease;">
+                <i class="fab fa-github"></i>
+            </a>
+            <a href="https://discord.gg/DbNQgMWJ8G" target="_blank" style="color: var(--text-secondary); font-size: 1.2rem; transition: all 0.3s ease;">
+                <i class="fab fa-discord"></i>
+            </a>
+        </div>
+        <div class="copyright">
+            &copy; 2026 WHITE HOUSE. ALL RIGHTS RESERVED.
+        </div>
+    </footer>
+
+    <script>
+        // Matrix Background
+        const canvas = document.getElementById('matrixCanvas');
+        const ctx = canvas.getContext('2d');
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+
+        resizeCanvas();
+
+        const matrixChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789$+-*/=%\"'#&_(),.;:?!\\|{}<>[]^~";
+        const chars = matrixChars.split("");
+
+        const fontSize = 14;
+        let columns = canvas.width / fontSize;
+
+        let drops = [];
+
+        function initDrops() {
+            drops = [];
+            columns = canvas.width / fontSize;
+            for (let i = 0; i < columns; i++) {
+                drops[i] = Math.floor(Math.random() * canvas.height / fontSize) * fontSize;
+            }
+        }
+
+        initDrops();
+
+        function drawMatrix() {
+            ctx.fillStyle = "rgba(0, 0, 0, 0.04)";
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            ctx.fillStyle = "#ffffff";
+            ctx.font = `${fontSize}px 'Roboto Mono', monospace`;
+            
+            for (let i = 0; i < drops.length; i++) {
+                const text = chars[Math.floor(Math.random() * chars.length)];
+                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+                drops[i] += fontSize;
+                if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                    drops[i] = 0;
+                }
+            }
+        }
+
+        function animate() {
+            drawMatrix();
+            requestAnimationFrame(animate);
+        }
+
+        animate();
+
+        window.addEventListener('resize', () => {
+            resizeCanvas();
+            initDrops();
+        });
+
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const desktopNav = document.querySelector('.desktop-nav');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            desktopNav.style.display = desktopNav.style.display === 'flex' ? 'none' : 'flex';
+            desktopNav.style.flexDirection = 'column';
+            desktopNav.style.position = 'absolute';
+            desktopNav.style.top = '70px';
+            desktopNav.style.right = '5%';
+            desktopNav.style.backgroundColor = 'rgba(0, 0, 0, 0.95)';
+            desktopNav.style.padding = '20px';
+            desktopNav.style.borderRadius = '8px';
+            desktopNav.style.border = '1px solid rgba(255, 255, 255, 0.1)';
+            desktopNav.style.backdropFilter = 'blur(15px)';
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!desktopNav.contains(e.target) && !mobileMenuBtn.contains(e.target) && window.innerWidth <= 992) {
+                desktopNav.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
