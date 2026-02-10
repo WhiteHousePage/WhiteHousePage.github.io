@@ -1027,140 +1027,6 @@
             font-size: 0.9rem;
         }
 
-        .doxx-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
-
-        .doxx-card {
-            background-color: #080808;
-            border-radius: 10px;
-            padding: 30px;
-            text-align: center;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
-            opacity: 0;
-            transform: translateY(50px);
-            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .doxx-card.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .doxx-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
-        }
-
-        .doxx-card.premium {
-            border: 1px solid rgba(157, 0, 255, 0.5);
-        }
-
-        .doxx-card.premium:hover {
-            border-color: var(--purple-color);
-            box-shadow: 0 15px 30px rgba(157, 0, 255, 0.2);
-        }
-
-        .doxx-card.free {
-            border: 1px solid rgba(255, 0, 255, 0.5);
-        }
-
-        .doxx-card.free:hover {
-            border-color: var(--pink-color);
-            box-shadow: 0 15px 30px rgba(255, 0, 255, 0.2);
-        }
-
-        .doxx-icon {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-        }
-
-        .doxx-card.premium .doxx-icon {
-            color: var(--purple-color);
-            text-shadow: 0 0 15px var(--purple-glow);
-        }
-
-        .doxx-card.free .doxx-icon {
-            color: var(--pink-color);
-            text-shadow: 0 0 15px var(--pink-glow);
-        }
-
-        .doxx-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-        }
-
-        .doxx-card.premium h3 {
-            color: var(--purple-color);
-            text-shadow: 0 0 10px var(--purple-glow);
-        }
-
-        .doxx-card.free h3 {
-            color: var(--pink-color);
-            text-shadow: 0 0 10px var(--pink-glow);
-        }
-
-        .doxx-card p {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-            margin-bottom: 20px;
-        }
-
-        .doxx-info {
-            padding: 15px;
-            border-radius: 5px;
-            margin-top: 20px;
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-        }
-
-        .doxx-card.premium .doxx-info {
-            background: rgba(157, 0, 255, 0.1);
-            border-left: 3px solid var(--purple-color);
-        }
-
-        .doxx-card.free .doxx-info {
-            background: rgba(255, 0, 255, 0.1);
-            border-left: 3px solid var(--pink-color);
-        }
-
-        .access-button {
-            display: inline-block;
-            padding: 12px 30px;
-            margin-top: 15px;
-            text-decoration: none;
-            font-weight: bold;
-            border-radius: 5px;
-            transition: all 0.3s ease;
-        }
-
-        .doxx-card.premium .access-button {
-            background: transparent;
-            color: var(--purple-color);
-            border: 2px solid var(--purple-color);
-        }
-
-        .doxx-card.premium .access-button:hover {
-            background: rgba(157, 0, 255, 0.1);
-            box-shadow: 0 0 20px var(--purple-glow);
-        }
-
-        .doxx-card.free .access-button {
-            background: transparent;
-            color: var(--pink-color);
-            border: 2px solid var(--pink-color);
-        }
-
-        .doxx-card.free .access-button:hover {
-            background: rgba(255, 0, 255, 0.1);
-            box-shadow: 0 0 20px var(--pink-glow);
-        }
-
         footer {
             background-color: var(--black-2);
             padding: 60px 5% 30px;
@@ -1399,8 +1265,6 @@
             <a href="#home">Home</a>
             <a href="#tools">Tools</a>
             <a href="#about">About</a>
-            <a href="#doxxes">Doxxes</a>
-            <a href="/database" target="_blank">Free Database</a>
             <a href="https://discord.gg/DbNQgMWJ8G" target="_blank">Join Discord</a>
         </div>
         
@@ -1430,12 +1294,6 @@
             <a href="#about" class="mobile-menu-link">
                 <i class="fas fa-info-circle"></i> About
             </a>
-            <a href="#doxxes" class="mobile-menu-link">
-                <i class="fas fa-file-alt"></i> Doxxes
-            </a>
-            <a href="/database" target="_blank" class="mobile-menu-link">
-                <i class="fas fa-database"></i> Free Database
-            </a>
             <a href="https://discord.gg/DbNQgMWJ8G" target="_blank" class="mobile-menu-link">
                 <i class="fab fa-discord"></i> Join Discord
             </a>
@@ -1455,7 +1313,6 @@
             <div class="terminal-line active" id="terminal-line-1">WHASH - Fastest Password Cracker by White House</div>
             <div class="terminal-line" id="terminal-line-2">discord.gg/DbNQgMWJ8G</div>
             <div class="terminal-line" id="terminal-line-3">https://guns.lol/whynexoo</div>
-            <div class="terminal-line" id="terminal-line-4">Access Doxxes Database: /database</div>
         </div>
         
         <div class="scroll-down" id="scrollDown">
@@ -1481,34 +1338,24 @@
                 <div class="tool-link">Get Tool</div>
             </div>
             
-            <a href="https://github.com/DaNexoo/Nexcord" target="_blank" class="tool-card red-theme" id="tool2">
+            <a href="NexcordBasic.html" target="_blank" class="tool-card red-theme" id="tool2">
                 <div class="tool-icon">
                     <i class="fab fa-discord"></i>
                 </div>
                 <h3>Nexcord Basic</h3>
                 <div class="tool-price">FREE</div>
                 <p>The free version of a Discord nuker tool named Nexcord made by the owner of White House. Basic features for server management and moderation.</p>
-                <div class="tool-link">View on GitHub</div>
+                <div class="tool-link">View on WhiteHouse</div>
             </a>
             
-            <a href="https://github.com/DaNexoo/Nexcordplus" target="_blank" class="tool-card gold-theme" id="tool3">
+            <a href="NexcordPlus.html" target="_blank" class="tool-card gold-theme" id="tool3">
                 <div class="tool-icon">
                     <i class="fab fa-discord"></i>
                 </div>
                 <h3>Nexcord Plus</h3>
                 <div class="tool-price">€3.99</div>
                 <p>The paid version of Nexcord with advanced features, enhanced performance, and premium tools. Purchase keys on the White House Discord server.</p>
-                <div class="tool-link">View on GitHub</div>
-            </a>
-            
-            <a href="/database" target="_blank" class="tool-card pink-theme" id="tool4">
-                <div class="tool-icon">
-                    <i class="fas fa-database"></i>
-                </div>
-                <h3>Doxxes Database</h3>
-                <div class="tool-price">FREE</div>
-                <p>Access White House's public doxxes database in YAML format. Contains verified information from our operations. Updated regularly.</p>
-                <div class="tool-link">Access Database</div>
+                <div class="tool-link">View on WhiteHouse</div>
             </a>
         </div>
     </section>
@@ -1522,18 +1369,14 @@
                 
                 <div class="stats">
                     <div class="stat-item" id="stat1">
-                        <div class="stat-number">4+</div>
+                        <div class="stat-number">3+</div>
                         <div>Tools Developed</div>
                     </div>
                     <div class="stat-item" id="stat2">
-                        <div class="stat-number">7+</div>
-                        <div>Doxxes in Database</div>
+                        <div class="stat-number">Free/Paid</div>
+                        <div>Tools Available</div>
                     </div>
                     <div class="stat-item" id="stat3">
-                        <div class="stat-number">Free/Paid</div>
-                        <div>Database Access</div>
-                    </div>
-                    <div class="stat-item" id="stat4">
                         <div class="stat-number">24/7</div>
                         <div>Support Available</div>
                     </div>
@@ -1551,75 +1394,11 @@
                     <div class="link-desc">Check out our profile on guns.lol</div>
                 </a>
                 
-                <a href="/database" target="_blank" class="link-item" id="link3">
-                    <div>Database Access</div>
-                    <div class="link-desc">Access free doxxes database (YAML format)</div>
-                </a>
-                
-                <a href="#doxxes" class="link-item" id="link4">
-                    <div>Doxxes Section</div>
-                    <div class="link-desc">Learn about free and premium doxxes access</div>
+                <a href="#tools" class="link-item" id="link3">
+                    <div>Our Tools</div>
+                    <div class="link-desc">Browse our collection of available tools</div>
                 </a>
             </div>
-        </div>
-    </section>
-
-    <section class="section" id="doxxes">
-        <h2 class="section-title" id="doxxesTitle">WHITE HOUSE DOXXES</h2>
-        
-        <div class="about-text" style="text-align: center; max-width: 800px; margin: 0 auto 50px;">
-            <p id="doxxIntro">Access White House's doxxes database. We offer both free and premium access to verified information collected by our team.</p>
-        </div>
-        
-        <div class="doxx-container">
-            <div class="doxx-card premium" id="doxx1">
-                <div class="doxx-icon">
-                    <i class="fas fa-crown"></i>
-                </div>
-                <h3>Premium Doxxes</h3>
-                <p>High-value targets with complete information packages including addresses, phone numbers, emails, and social media profiles. Updated regularly with new targets.</p>
-                <div class="doxx-info">
-                    <i class="fas fa-lock"></i> Available to VIP members only - Join Discord for access
-                </div>
-                <a href="https://discord.gg/DbNQgMWJ8G" target="_blank" class="access-button">
-                    <i class="fab fa-discord"></i> Join Discord for Access
-                </a>
-            </div>
-            
-            <div class="doxx-card free" id="doxx2">
-                <div class="doxx-icon">
-                    <i class="fas fa-database"></i>
-                </div>
-                <h3>Free Database Access</h3>
-                <p>Public access to White House's basic doxxing database in YAML format. Contains verified entries from our public operations. Updated monthly.</p>
-                <div class="doxx-info">
-                    <i class="fas fa-unlock"></i> Free access - Visit /database on this site
-                </div>
-                <a href="/database" target="_blank" class="access-button">
-                    <i class="fas fa-external-link-alt"></i> Access / database
-                </a>
-            </div>
-            
-            <div class="doxx-card premium" id="doxx3">
-                <div class="doxx-icon">
-                    <i class="fas fa-user-plus"></i>
-                </div>
-                <h3>Request System</h3>
-                <p>Request specific doxxes through our Discord system. Our team will work on gathering information for your requested targets. Priority for VIP members.</p>
-                <div class="doxx-info">
-                    <i class="fas fa-comment-dollar"></i> Paid requests available - Contact on Discord
-                </div>
-                <a href="https://discord.gg/DbNQgMWJ8G" target="_blank" class="access-button">
-                    <i class="fas fa-comments"></i> Request on Discord
-                </a>
-            </div>
-        </div>
-        
-        <div style="text-align: center; margin-top: 50px;">
-            <p style="color: var(--text-secondary); margin-bottom: 20px; max-width: 800px; margin-left: auto; margin-right: auto;">
-                <i class="fas fa-info-circle" style="color: var(--pink-color);"></i> 
-                Note: The free database at /database contains basic information. For complete packages and premium doxxes, join our Discord server and become a VIP member.
-            </p>
         </div>
     </section>
 
@@ -1628,13 +1407,11 @@
             <div>
                 <div class="footer-logo">
                     <img src="wh.png" alt="White House Logo" class="footer-logo-img">
-                    WHITE HOUSE
                 </div>
                 <p style="color: var(--text-secondary); margin-bottom: 20px;">Professional Doxbin group providing advanced digital tools and utilities including WHASH password cracker.</p>
                 <div style="display: flex; gap: 15px;">
                     <a href="https://github.com/danexoo/" target="_blank" style="color: var(--text-secondary); font-size: 1.2rem; transition: all 0.3s ease;"><i class="fab fa-github"></i></a>
                     <a href="https://discord.gg/DbNQgMWJ8G" target="_blank" style="color: var(--text-secondary); font-size: 1.2rem; transition: all 0.3s ease;"><i class="fab fa-discord"></i></a>
-                    <a href="/database" target="_blank" style="color: var(--text-secondary); font-size: 1.2rem; transition: all 0.3s ease;"><i class="fas fa-database"></i></a>
                 </div>
             </div>
             
@@ -1644,8 +1421,6 @@
                     <li><a href="#home">Home</a></li>
                     <li><a href="#tools">Tools</a></li>
                     <li><a href="#about">About</a></li>
-                    <li><a href="#doxxes">Doxxes</a></li>
-                    <li><a href="/database" target="_blank">Free Database</a></li>
                     <li><a href="https://discord.gg/DbNQgMWJ8G" target="_blank">Join Discord</a></li>
                 </ul>
             </div>
@@ -1653,17 +1428,15 @@
             <div class="footer-links">
                 <h4>Our Services</h4>
                 <ul>
-                    <li><a href="https://github.com/DaNexoo/WHASH" target="_blank">WHASH Password Cracker (Free)</a></li>
-                    <li><a href="https://github.com/DaNexoo/Nexcord" target="_blank">Nexcord Basic (Free)</a></li>
-                    <li><a href="https://github.com/DaNexoo/Nexcordplus" target="_blank">Nexcord Plus (€3.99)</a></li>
-                    <li><a href="/database" target="_blank">Doxxes Database (Free)</a></li>
-                    <li><a href="https://discord.gg/DbNQgMWJ8G" target="_blank">Premium Doxxes (VIP)</a></li>
+                    <li><a href="#tools">WHASH Password Cracker (Soon)</a></li>
+                    <li><a href="NexcordBasic.html" target="_blank">Nexcord Basic (Free)</a></li>
+                    <li><a href="NexcordPlus.html" target="_blank">Nexcord Plus (€3.99)</a></li>
                 </ul>
             </div>
         </div>
         
         <div class="copyright">
-            &copy; 2026 WHITE HOUSE. ALL RIGHTS RESERVED. | WHASH Password Cracker Available | /database - Free Access | Premium Doxxes - VIP Only
+            &copy; 2026 WHITE HOUSE. ALL RIGHTS RESERVED.
         </div>
     </footer>
 
@@ -1769,8 +1542,7 @@
     const terminalLines = [
         document.getElementById('terminal-line-1'),
         document.getElementById('terminal-line-2'),
-        document.getElementById('terminal-line-3'),
-        document.getElementById('terminal-line-4')
+        document.getElementById('terminal-line-3')
     ];
 
     let currentLineIndex = 0;
@@ -1786,7 +1558,7 @@
             currentLineIndex = (currentLineIndex + 1) % terminalLines.length;
             
             setTimeout(() => {
-                terminalLines[(currentLineIndex + 3) % 4].classList.remove('leaving');
+                terminalLines[(currentLineIndex + 2) % 3].classList.remove('leaving');
             }, 500);
             
             setTimeout(() => {
@@ -1809,23 +1581,15 @@
             { id: 'tool1', threshold: 0.2 },
             { id: 'tool2', threshold: 0.2 },
             { id: 'tool3', threshold: 0.2 },
-            { id: 'tool4', threshold: 0.2 },
             { id: 'aboutTitle', threshold: 0.3 },
             { id: 'aboutText1', threshold: 0.2 },
             { id: 'aboutText2', threshold: 0.2 },
             { id: 'stat1', threshold: 0.2 },
             { id: 'stat2', threshold: 0.2 },
             { id: 'stat3', threshold: 0.2 },
-            { id: 'stat4', threshold: 0.2 },
             { id: 'link1', threshold: 0.2 },
             { id: 'link2', threshold: 0.2 },
-            { id: 'link3', threshold: 0.2 },
-            { id: 'link4', threshold: 0.2 },
-            { id: 'doxxesTitle', threshold: 0.3 },
-            { id: 'doxxIntro', threshold: 0.2 },
-            { id: 'doxx1', threshold: 0.2 },
-            { id: 'doxx2', threshold: 0.2 },
-            { id: 'doxx3', threshold: 0.2 }
+            { id: 'link3', threshold: 0.2 }
         ];
 
         const observer = new IntersectionObserver((entries) => {
@@ -1996,23 +1760,6 @@
             }, 300);
         });
     }
-
-    document.querySelectorAll('a[href="#doxxes"]').forEach(link => {
-        link.addEventListener('click', function(e) {
-            if (!this.href.includes('#')) return;
-            
-            e.preventDefault();
-            const doxxesSection = document.getElementById('doxxes');
-            
-            if (doxxesSection) {
-                isProgrammaticScroll = true;
-                doxxesSection.scrollIntoView({ 
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-            }
-        });
-    });
 
     const scrollDownArrow = document.querySelector('.scroll-arrow');
     if (scrollDownArrow) {
