@@ -1031,6 +1031,38 @@
             .option-desc {
                 font-size: 0.85rem;
             }
+            
+            .recommended-badge {
+                position: static !important;
+                margin-top: 10px !important;
+                margin-bottom: 10px !important;
+                display: inline-block !important;
+                width: 100% !important;
+                text-align: center !important;
+                transform: none !important;
+                order: 2 !important;
+            }
+            
+            .download-option.recommended .option-title {
+                flex-wrap: wrap !important;
+                gap: 10px !important;
+            }
+            
+            .option-title i {
+                order: 1 !important;
+                margin-right: 0 !important;
+                margin-bottom: 5px !important;
+            }
+            
+            .download-option.recommended {
+                padding-top: 25px !important;
+                padding-bottom: 25px !important;
+                text-align: left !important;
+            }
+            
+            .download-option {
+                text-align: left !important;
+            }
         }
 
         @media (max-width: 480px) {
@@ -1049,6 +1081,14 @@
             .download-button {
                 padding: 12px 25px;
                 font-size: 1.1rem;
+            }
+            
+            .mobile-menu {
+                width: 250px;
+            }
+            
+            .navbar {
+                padding: 10px 15px;
             }
             @media (max-width: 767px) {
     .inactive-modal-content,
@@ -1131,15 +1171,6 @@
     }
 }
             }
-            
-            .mobile-menu {
-                width: 250px;
-            }
-            
-            .navbar {
-                padding: 10px 15px;
-            }
-        }
     </style>
 </head>
 <body>
@@ -1490,4 +1521,4 @@
         });
     </script>
 </body>
-</html>
+</html> 
