@@ -23,8 +23,8 @@
             --red-primary: #ff1a1a;
             --red-glow: rgba(255, 26, 26, 0.9);
             --red-dim: rgba(255, 26, 26, 0.3);
-            --blue-primary: #3a86ff;
-            --blue-glow: rgba(58, 134, 255, 0.9);
+            --gold-primary: #ffd700;
+            --gold-glow: rgba(255, 215, 0, 0.9);
             --orange-primary: #ff9e00;
             --orange-glow: rgba(255, 158, 0, 0.9);
             --text-primary: #ffffff;
@@ -32,6 +32,8 @@
             --text-tertiary: #999999;
             --discord: #5865f2;
             --discord-glow: rgba(88, 101, 242, 0.9);
+            --accent-white: #ffffff;
+            --accent-glow: rgba(255, 255, 255, 0.7);
         }
 
         body {
@@ -61,14 +63,12 @@
         }
 
         ::-webkit-scrollbar-thumb {
-            background: var(--red-primary);
+            background: var(--text-secondary);
             border-radius: 4px;
-            box-shadow: 0 0 15px var(--red-glow);
         }
 
         ::-webkit-scrollbar-thumb:hover {
-            background: #ff4d4d;
-            box-shadow: 0 0 25px var(--red-glow);
+            background: var(--text-primary);
         }
 
         html {
@@ -107,7 +107,7 @@
             width: 120px;
             height: 120px;
             margin-bottom: 25px;
-            filter: drop-shadow(0 0 15px rgba(255, 26, 26, 0.5));
+            filter: drop-shadow(0 0 5px black);
             animation: loadingPulse 1.8s infinite alternate cubic-bezier(0.4, 0, 0.2, 1);
         }
 
@@ -117,7 +117,6 @@
             letter-spacing: 8px;
             color: var(--text-primary);
             text-transform: uppercase;
-            text-shadow: 0 0 20px var(--red-glow);
             position: relative;
         }
 
@@ -141,7 +140,7 @@
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             z-index: 1000;
-            border-bottom: 1px solid rgba(255, 26, 26, 0.2);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             height: 75px;
         }
 
@@ -156,20 +155,15 @@
         }
 
         .logo:hover {
-            text-shadow: 0 0 20px var(--red-glow);
+            text-shadow: 0 0 8px var(--accent-glow);
         }
 
         .logo-img {
             width: 42px;
             height: 42px;
             margin-right: 12px;
-            filter: drop-shadow(0 0 8px var(--red-dim));
+            filter: drop-shadow(0 0 3px black);
             transition: all 0.3s ease;
-        }
-
-        .logo:hover .logo-img {
-            filter: drop-shadow(0 0 15px var(--red-glow));
-            transform: scale(1.05);
         }
 
         .desktop-nav {
@@ -194,8 +188,8 @@
 
         .desktop-nav a:hover {
             color: var(--text-primary);
-            text-shadow: 0 0 15px var(--red-glow);
-            background: rgba(255, 26, 26, 0.05);
+            text-shadow: 0 0 8px var(--accent-glow);
+            background: rgba(255, 255, 255, 0.05);
             transform: translateY(-2px);
         }
 
@@ -206,10 +200,9 @@
             left: 50%;
             width: 0;
             height: 2px;
-            background: var(--red-primary);
+            background: var(--accent-white);
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             transform: translateX(-50%);
-            box-shadow: 0 0 15px var(--red-glow);
         }
 
         .desktop-nav a:hover::after {
@@ -255,9 +248,8 @@
         }
 
         .mobile-menu-btn:hover {
-            color: var(--red-primary);
+            color: var(--accent-white);
             transform: rotate(90deg);
-            text-shadow: 0 0 20px var(--red-glow);
         }
 
         .mobile-menu-overlay {
@@ -288,7 +280,7 @@
             -webkit-backdrop-filter: blur(25px);
             z-index: 9999;
             transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            border-left: 1px solid rgba(255, 26, 26, 0.2);
+            border-left: 1px solid rgba(255, 255, 255, 0.1);
             display: flex;
             flex-direction: column;
         }
@@ -302,18 +294,18 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            border-bottom: 1px solid rgba(255, 26, 26, 0.2);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .mobile-menu-header img {
             width: 38px;
             height: 38px;
-            filter: drop-shadow(0 0 10px var(--red-dim));
+            filter: drop-shadow(0 0 3px black);
         }
 
         .mobile-close-btn {
-            background: rgba(255, 26, 26, 0.1);
-            border: 1px solid rgba(255, 26, 26, 0.3);
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
             color: var(--text-primary);
             font-size: 1.2rem;
             cursor: pointer;
@@ -328,10 +320,8 @@
         }
 
         .mobile-close-btn:hover {
-            background: rgba(255, 26, 26, 0.2);
+            background: rgba(255, 255, 255, 0.2);
             transform: rotate(90deg);
-            box-shadow: 0 0 20px var(--red-glow);
-            border-color: var(--red-primary);
         }
 
         .mobile-menu-content {
@@ -348,11 +338,11 @@
             color: var(--text-primary);
             text-decoration: none;
             border-radius: 8px;
-            background: rgba(255, 26, 26, 0.05);
+            background: rgba(255, 255, 255, 0.05);
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             font-size: 1rem;
             font-weight: 500;
-            border: 1px solid rgba(255, 26, 26, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .mobile-menu-link i {
@@ -360,13 +350,12 @@
             width: 22px;
             text-align: center;
             font-size: 1.2rem;
-            color: var(--red-primary);
+            color: var(--accent-white);
         }
 
         .mobile-menu-link:hover {
-            background: rgba(255, 26, 26, 0.15);
-            border-color: var(--red-primary);
-            box-shadow: 0 0 25px var(--red-dim);
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.3);
             transform: translateX(8px);
         }
 
@@ -408,6 +397,11 @@
             transform: translateY(30px);
             animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
             letter-spacing: 4px;
+        }
+
+        .tool-title:hover {
+            transform: scale(1.05);
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .tool-subtitle {
@@ -465,7 +459,6 @@
             opacity: 0;
             transform: translateY(30px);
             animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.4s forwards;
-            text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
             letter-spacing: 4px;
         }
 
@@ -486,7 +479,7 @@
             border-radius: 12px;
             border: 2px solid rgba(255, 26, 26, 0.5);
             box-shadow: 0 0 40px rgba(255, 26, 26, 0.4);
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.5s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.5s cubic-bezier(0.4, 0, 0.2, 1);
             margin: 0 auto;
             display: block;
             cursor: pointer;
@@ -510,7 +503,7 @@
             background: var(--red-primary);
             border-radius: 4px;
             box-shadow: 0 0 20px var(--red-glow);
-            animation: pulseWidth 2s infinite alternate;
+            transition: all 0.3s ease;
         }
 
         .download-section {
@@ -540,10 +533,10 @@
             align-items: center;
             gap: 10px;
             padding: 12px 28px;
-            background: rgba(58, 134, 255, 0.1);
-            border: 2px solid var(--blue-primary);
+            background: rgba(255, 215, 0, 0.08);
+            border: 2px solid var(--gold-primary);
             border-radius: 40px;
-            color: var(--blue-primary);
+            color: var(--gold-primary);
             text-decoration: none;
             font-weight: 700;
             font-size: 0.9rem;
@@ -552,7 +545,7 @@
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             backdrop-filter: blur(8px);
             -webkit-backdrop-filter: blur(8px);
-            box-shadow: 0 0 20px rgba(58, 134, 255, 0.3);
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
         }
 
         .plus-button i {
@@ -561,14 +554,10 @@
         }
 
         .plus-button:hover {
-            background: rgba(58, 134, 255, 0.2);
-            border-color: var(--blue-primary);
-            box-shadow: 0 0 40px var(--blue-glow);
+            background: rgba(255, 215, 0, 0.15);
+            border-color: var(--gold-primary);
+            box-shadow: 0 0 40px var(--gold-glow);
             transform: translateY(-3px) scale(1.05);
-        }
-
-        .plus-button:hover i {
-            transform: rotate(10deg);
         }
 
         .download-wrapper {
@@ -605,14 +594,20 @@
             text-shadow: 0 0 15px var(--red-glow);
         }
 
-        .dropdown-trigger i {
+        .dropdown-trigger i:first-child {
+            color: var(--red-primary);
+            text-shadow: 0 0 15px var(--red-glow);
+            margin-right: 15px;
+        }
+
+        .dropdown-trigger i:last-child {
             transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
             font-size: 1.5rem;
             color: var(--red-primary);
             text-shadow: 0 0 15px var(--red-glow);
         }
 
-        .dropdown-trigger.active i {
+        .dropdown-trigger.active i:last-child {
             transform: rotate(180deg);
         }
 
@@ -651,34 +646,6 @@
             transform: translateY(-5px) scale(1.01);
         }
 
-        .download-option.recommended {
-            background: rgba(58, 134, 255, 0.08);
-            border: 1px solid rgba(58, 134, 255, 0.3);
-        }
-
-        .download-option.recommended:hover {
-            background: rgba(58, 134, 255, 0.12);
-            border-color: var(--blue-primary);
-            box-shadow: 0 0 40px rgba(58, 134, 255, 0.3);
-        }
-
-        .recommended-badge {
-            position: absolute;
-            top: 15px;
-            right: 20px;
-            background: rgba(58, 134, 255, 0.2);
-            color: var(--blue-primary);
-            padding: 6px 16px;
-            border-radius: 30px;
-            font-size: 0.7rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            border: 1px solid rgba(58, 134, 255, 0.5);
-            backdrop-filter: blur(5px);
-            -webkit-backdrop-filter: blur(5px);
-        }
-
         .option-title {
             color: var(--red-primary);
             font-size: 1.3rem;
@@ -689,19 +656,10 @@
             flex-wrap: wrap;
         }
 
-        .download-option.recommended .option-title {
-            color: var(--blue-primary);
-        }
-
         .option-title i {
             color: var(--red-primary);
             text-shadow: 0 0 15px var(--red-glow);
             font-size: 1.6rem;
-        }
-
-        .download-option.recommended .option-title i {
-            color: var(--blue-primary);
-            text-shadow: 0 0 15px var(--blue-glow);
         }
 
         .option-desc {
@@ -709,6 +667,13 @@
             font-size: 0.9rem;
             margin-bottom: 20px;
             line-height: 1.7;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            align-items: center;
         }
 
         .download-link {
@@ -723,15 +688,7 @@
             font-size: 0.9rem;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             text-align: center;
-            align-self: flex-start;
-            position: relative;
-            overflow: hidden;
             letter-spacing: 2px;
-        }
-
-        .download-option.recommended .download-link {
-            color: var(--blue-primary);
-            border-color: var(--blue-primary);
         }
 
         .download-link:hover {
@@ -740,34 +697,52 @@
             transform: translateY(-3px);
         }
 
-        .download-option.recommended .download-link:hover {
-            background: rgba(58, 134, 255, 0.15);
-            box-shadow: 0 0 30px var(--blue-glow);
+        .view-raw-link {
+            display: inline-block;
+            padding: 12px 28px;
+            background: transparent;
+            color: var(--red-primary);
+            border: 2px solid var(--red-primary);
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.9rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            text-align: center;
+            letter-spacing: 2px;
         }
 
-        .download-link::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 26, 26, 0.3), transparent);
-            transition: left 0.6s ease;
+        .view-raw-link:hover {
+            background: rgba(255, 26, 26, 0.15);
+            box-shadow: 0 0 30px var(--red-glow);
+            transform: translateY(-3px);
         }
 
-        .download-option.recommended .download-link::before {
-            background: linear-gradient(90deg, transparent, rgba(58, 134, 255, 0.3), transparent);
+        .github-link {
+            display: inline-block;
+            padding: 12px 28px;
+            background: transparent;
+            color: var(--text-primary);
+            border: 2px solid var(--text-secondary);
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.9rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            text-align: center;
+            letter-spacing: 2px;
         }
 
-        .download-link:hover::before {
-            left: 100%;
+        .github-link:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--text-primary);
+            transform: translateY(-3px);
         }
 
         footer {
             background: var(--black-2);
             padding: 50px 25px 25px;
-            border-top: 1px solid rgba(255, 26, 26, 0.2);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .footer-content {
@@ -790,12 +765,11 @@
         .footer-logo-img {
             width: 40px;
             height: 40px;
-            filter: drop-shadow(0 0 10px var(--red-dim));
+            filter: drop-shadow(0 0 3px black);
             transition: all 0.3s ease;
         }
 
         .footer-logo-img:hover {
-            filter: drop-shadow(0 0 20px var(--red-glow));
             transform: scale(1.1);
         }
 
@@ -815,8 +789,7 @@
             left: 0;
             width: 40px;
             height: 2px;
-            background: var(--red-primary);
-            box-shadow: 0 0 15px var(--red-glow);
+            background: var(--text-secondary);
         }
 
         .footer-links ul {
@@ -836,15 +809,14 @@
         }
 
         .footer-links a:hover {
-            color: var(--red-primary);
+            color: var(--text-primary);
             transform: translateX(8px);
-            text-shadow: 0 0 10px var(--red-dim);
         }
 
         .copyright {
             text-align: center;
             padding-top: 25px;
-            border-top: 1px solid rgba(255, 26, 26, 0.1);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
             color: var(--text-tertiary);
             font-size: 0.8rem;
             letter-spacing: 1px;
@@ -990,13 +962,13 @@
         }
 
         @keyframes loadingPulse {
-            0% {
-                transform: scale(1);
-                filter: drop-shadow(0 0 15px rgba(255, 26, 26, 0.5));
+            0% { 
+                transform: scale(1); 
+                filter: drop-shadow(0 0 5px black);
             }
-            100% {
-                transform: scale(1.1);
-                filter: drop-shadow(0 0 40px rgba(255, 26, 26, 0.8));
+            100% { 
+                transform: scale(1.1); 
+                filter: drop-shadow(0 0 8px black);
             }
         }
 
@@ -1004,11 +976,6 @@
             0%, 20% { content: "."; }
             40% { content: ".."; }
             60%, 100% { content: "..."; }
-        }
-
-        @keyframes pulseWidth {
-            0% { width: 50px; opacity: 0.8; }
-            100% { width: 70px; opacity: 1; }
         }
 
         @media (min-width: 768px) {
@@ -1115,14 +1082,12 @@
                 font-size: 1.1rem;
             }
             
-            .recommended-badge {
-                position: static;
-                display: inline-block;
-                margin-bottom: 15px;
-                width: fit-content;
+            .button-group {
+                flex-direction: column;
+                width: 100%;
             }
             
-            .download-link {
+            .download-link, .view-raw-link, .github-link {
                 width: 100%;
             }
             
@@ -1172,7 +1137,7 @@
                 padding: 15px;
             }
             
-            .dropdown-trigger i {
+            .dropdown-trigger i:last-child {
                 font-size: 1.2rem;
             }
             
@@ -1322,24 +1287,28 @@
                 
                 <div class="download-dropdown" id="downloadDropdown">
                     <div class="download-options-grid">
-                        <div class="download-option recommended">
-                            <div class="recommended-badge">RECOMMENDED</div>
-                            <h3 class="option-title">
-                                <i class="fab fa-github"></i> GitHub Repository
-                            </h3>
-                            <p class="option-desc">Official open-source repository. View source code, report issues, fork, and contribute. Always up-to-date.</p>
-                            <a href="https://github.com/DaNexoo/Nexcord" target="_blank" class="download-link">
-                                <i class="fab fa-github"></i> VIEW RAW .PY
-                            </a>
-                        </div>
-                        
                         <div class="download-option">
                             <h3 class="option-title">
                                 <i class="fab fa-python"></i> Nexcord.py
                             </h3>
                             <p class="option-desc">Direct Python script file. Latest stable build, self-contained, ready to execute.</p>
-                            <a href="Nexcord.py" class="download-link" download>
-                                <i class="fas fa-download"></i> DOWNLOAD (.PY)
+                            <div class="button-group">
+                                <a href="Nexcord.py" class="download-link" download>
+                                    <i class="fas fa-download"></i> DOWNLOAD (.PY)
+                                </a>
+                                <a href="https://files.catbox.moe/vdui9s.py" class="view-raw-link" target="_blank">
+                                    <i class="fas fa-code"></i> VIEW RAW .PY
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <div class="download-option">
+                            <h3 class="option-title">
+                                <i class="fab fa-github"></i> GitHub Repository
+                            </h3>
+                            <p class="option-desc">Official open-source repository. View source code, report issues, fork, and contribute.</p>
+                            <a href="https://github.com/DaNexoo/Nexcord" target="_blank" class="github-link">
+                                <i class="fab fa-github"></i> OPEN GITHUB
                             </a>
                         </div>
                         
@@ -1479,10 +1448,12 @@
                 if (screenshot) {
                     screenshot.addEventListener('mouseenter', function() {
                         this.style.transform = 'scale(1.02)';
+                        this.style.borderColor = 'var(--red-primary)';
                         this.style.boxShadow = '0 0 70px var(--red-glow)';
                     });
                     screenshot.addEventListener('mouseleave', function() {
                         this.style.transform = 'scale(1)';
+                        this.style.borderColor = 'rgba(255, 26, 26, 0.5)';
                         this.style.boxShadow = '0 0 40px rgba(255, 26, 26, 0.4)';
                     });
                 }
