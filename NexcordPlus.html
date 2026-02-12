@@ -491,10 +491,6 @@
             box-shadow: 0 0 70px var(--gold-glow);
         }
 
-        .hidden-image {
-            display: none;
-        }
-
         .carousel-nav {
             display: flex;
             justify-content: center;
@@ -772,8 +768,8 @@
             display: inline-block;
             padding: 12px 28px;
             background: transparent;
-            color: var(--paused-primary);
-            border: 2px solid var(--paused-primary);
+            color: var(--gold-primary);
+            border: 2px solid var(--gold-primary);
             border-radius: 8px;
             text-decoration: none;
             font-weight: 700;
@@ -784,8 +780,8 @@
         }
 
         .key-link:hover {
-            background: rgba(157, 78, 221, 0.15);
-            box-shadow: 0 0 30px var(--paused-glow);
+            background: rgba(255, 215, 0, 0.15);
+            box-shadow: 0 0 30px var(--gold-glow);
             transform: translateY(-3px);
         }
 
@@ -1447,7 +1443,7 @@
         </div>
         
         <div class="copyright">
-            © 2026 WHITE HOUSE — ENGINEERED BY NEXOO. ALL RIGHTS RESERVED.
+            © 2026 WHITE HOUSE. ALL RIGHTS RESERVED.
         </div>
     </footer>
 
@@ -1468,7 +1464,7 @@
             
             const images = [
                 'https://files.catbox.moe/fquyy4.png',
-                'https://files.catbox.moe/wkajti.png ',
+                'https://files.catbox.moe/wkajti.png',
                 'https://files.catbox.moe/x3uk9n.png'
             ];
             
@@ -1476,12 +1472,17 @@
             const screenshotImg = document.getElementById('screenshotImage');
             const carouselDots = document.getElementById('carouselDots');
             let autoSlideInterval;
+            let imagesPreloaded = false;
 
             function preloadImages() {
                 images.forEach(src => {
                     const img = new Image();
                     img.src = src;
+                    img.onload = function() {
+                        this.complete = true;
+                    };
                 });
+                imagesPreloaded = true;
             }
 
             function createDots() {
