@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-    <title>White House | Nexcord Plus</title>
+    <title>White House | Nexcord Basic</title>
     <link rel="icon" type="image/png" href="wh.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Roboto+Mono:wght@300;400;500;700&display=swap" rel="stylesheet">
@@ -20,13 +20,13 @@
             --black-2: #080808;
             --black-3: #0c0c0c;
             --black-4: #121212;
-            --purple-primary: #9d4edd;
-            --purple-glow: rgba(157, 78, 221, 0.9);
-            --purple-dim: rgba(157, 78, 221, 0.3);
+            --red-primary: #ff1a1a;
+            --red-glow: rgba(255, 26, 26, 0.9);
+            --red-dim: rgba(255, 26, 26, 0.3);
             --gold-primary: #ffd700;
             --gold-glow: rgba(255, 215, 0, 0.9);
-            --paused-primary: #9d4edd;
-            --paused-glow: rgba(157, 78, 221, 0.9);
+            --orange-primary: #ff9e00;
+            --orange-glow: rgba(255, 158, 0, 0.9);
             --text-primary: #ffffff;
             --text-secondary: #cccccc;
             --text-tertiary: #999999;
@@ -63,12 +63,12 @@
         }
 
         ::-webkit-scrollbar-thumb {
-            background: var(--purple-primary);
+            background: var(--text-secondary);
             border-radius: 4px;
         }
 
         ::-webkit-scrollbar-thumb:hover {
-            background: var(--purple-glow);
+            background: var(--text-primary);
         }
 
         html {
@@ -114,16 +114,16 @@
         }
 
         .loading-text {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.6rem;
-            letter-spacing: 8px;
-            color: var(--text-primary);
-            text-transform: uppercase;
-            position: relative;
-            text-align: center;
-            width: 100%;
-            transform: translateX(12px);
-        }
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.6rem;
+    letter-spacing: 8px;
+    color: var(--text-primary);
+    text-transform: uppercase;
+    position: relative;
+    text-align: center;
+    width: 100%;
+    transform: translateX(12px); 
+}
 
         .loading-dots {
             display: inline-block;
@@ -193,33 +193,33 @@
 
         .desktop-nav a:hover {
             color: var(--text-primary);
-            text-shadow: 0 0 8px var(--purple-glow);
-            background: rgba(157, 78, 221, 0.1);
+            text-shadow: 0 0 8px var(--accent-glow);
+            background: rgba(255, 255, 255, 0.05);
         }
 
         .status-badge {
             display: inline-block;
-            background: rgba(157, 78, 221, 0.08);
-            color: var(--purple-primary);
+            background: rgba(255, 158, 0, 0.08);
+            color: var(--orange-primary);
             padding: 10px 22px;
             border-radius: 30px;
             font-size: 0.8rem;
             font-weight: 700;
-            border: 1.5px solid rgba(157, 78, 221, 0.4);
+            border: 1.5px solid rgba(255, 158, 0, 0.4);
             cursor: pointer;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             text-transform: uppercase;
             letter-spacing: 2px;
             backdrop-filter: blur(8px);
             -webkit-backdrop-filter: blur(8px);
-            box-shadow: 0 0 15px rgba(157, 78, 221, 0.2);
+            box-shadow: 0 0 15px rgba(255, 158, 0, 0.2);
             margin-right: 0;
         }
 
         .status-badge:hover {
-            background: rgba(157, 78, 221, 0.15);
-            border-color: var(--purple-primary);
-            box-shadow: 0 0 30px var(--purple-glow);
+            background: rgba(255, 158, 0, 0.15);
+            border-color: var(--orange-primary);
+            box-shadow: 0 0 30px var(--orange-glow);
             transform: scale(1.05);
         }
 
@@ -236,7 +236,7 @@
         }
 
         .mobile-menu-btn:hover {
-            color: var(--purple-primary);
+            color: var(--accent-white);
             transform: rotate(90deg);
         }
 
@@ -308,11 +308,8 @@
         }
 
         .mobile-close-btn:hover {
-            background: rgba(157, 78, 221, 0.2);
-            border-color: var(--purple-primary);
-            color: var(--purple-primary);
+            background: rgba(255, 255, 255, 0.2);
             transform: rotate(90deg);
-            box-shadow: 0 0 25px var(--purple-glow);
         }
 
         .mobile-menu-content {
@@ -341,12 +338,12 @@
             width: 22px;
             text-align: center;
             font-size: 1.2rem;
-            color: var(--purple-primary);
+            color: var(--red-primary);
         }
 
         .mobile-menu-link:hover {
-            background: rgba(157, 78, 221, 0.1);
-            border-color: var(--purple-primary);
+            background: rgba(255, 26, 26, 0.1);
+            border-color: var(--red-primary);
             transform: translateX(8px);
         }
 
@@ -373,16 +370,16 @@
             width: 100%;
             height: 100%;
             background: 
-                radial-gradient(circle at 15% 30%, rgba(157, 78, 221, 0.05) 0%, transparent 50%),
-                radial-gradient(circle at 85% 70%, rgba(157, 78, 221, 0.04) 0%, transparent 50%),
-                radial-gradient(circle at 50% 50%, rgba(157, 78, 221, 0.02) 0%, transparent 70%);
+                radial-gradient(circle at 15% 30%, rgba(255, 26, 26, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 85% 70%, rgba(255, 26, 26, 0.04) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(255, 26, 26, 0.02) 0%, transparent 70%);
             z-index: -1;
         }
 
         .tool-title {
             font-size: 3rem;
-            color: var(--gold-primary);
-            text-shadow: 0 0 30px var(--gold-glow), 0 0 60px rgba(255, 215, 0, 0.5);
+            color: var(--red-primary);
+            text-shadow: 0 0 30px var(--red-glow), 0 0 60px rgba(255, 26, 26, 0.5);
             margin-bottom: 20px;
             opacity: 0;
             transform: translateY(30px);
@@ -411,8 +408,8 @@
             max-width: 900px;
             margin: 0 auto;
             padding: 25px;
-            background: rgba(157, 78, 221, 0.03);
-            border: 1px solid rgba(157, 78, 221, 0.2);
+            background: rgba(255, 26, 26, 0.03);
+            border: 1px solid rgba(255, 26, 26, 0.1);
             border-radius: 16px;
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
@@ -429,24 +426,18 @@
         }
 
         .tool-description strong {
-            color: var(--gold-primary);
-            text-shadow: 0 0 8px var(--gold-glow);
+            color: var(--red-primary);
+            text-shadow: 0 0 8px var(--red-dim);
         }
 
-        .highlight-gold {
-            color: var(--gold-primary);
-            font-weight: 700;
-        }
-
-        .highlight-purple {
-            color: var(--purple-primary);
+        .highlight-red {
+            color: var(--red-primary);
             font-weight: 700;
         }
 
         .screenshot-section {
             padding: 80px 25px;
             text-align: center;
-            position: relative;
         }
 
         .section-title {
@@ -459,21 +450,14 @@
             letter-spacing: 4px;
         }
 
-        .screenshot-carousel {
-            position: relative;
-            max-width: 1000px;
+        .screenshot-container {
+            max-width: 100%;
             margin: 0 auto;
             opacity: 0;
             transform: translateY(50px);
             animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.5s forwards;
             padding: 0 15px;
-        }
-
-        .screenshot-container {
             position: relative;
-            width: 100%;
-            overflow: hidden;
-            border-radius: 12px;
         }
 
         .screenshot-image {
@@ -481,8 +465,8 @@
             max-width: 1000px;
             height: auto;
             border-radius: 12px;
-            border: 2px solid rgba(157, 78, 221, 0.5);
-            box-shadow: 0 0 40px rgba(157, 78, 221, 0.4);
+            border: 2px solid rgba(255, 26, 26, 0.5);
+            box-shadow: 0 0 40px rgba(255, 26, 26, 0.4);
             transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.5s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.5s cubic-bezier(0.4, 0, 0.2, 1);
             margin: 0 auto;
             display: block;
@@ -491,69 +475,23 @@
 
         .screenshot-image:hover {
             transform: scale(1.02);
-            border-color: var(--purple-primary);
-            box-shadow: 0 0 70px var(--purple-glow);
+            border-color: var(--red-primary);
+            box-shadow: 0 0 70px var(--red-glow);
         }
 
-        .carousel-nav {
+        .single-indicator {
             display: flex;
             justify-content: center;
-            align-items: center;
-            gap: 20px;
             margin-top: 30px;
         }
 
-        .carousel-btn {
-            background: rgba(157, 78, 221, 0.1);
-            border: 2px solid var(--purple-primary);
-            color: var(--purple-primary);
+        .indicator-single {
             width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 1.3rem;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .carousel-btn:hover {
-            background: rgba(157, 78, 221, 0.2);
-            box-shadow: 0 0 30px var(--purple-glow);
-            transform: scale(1.1);
-        }
-
-        .carousel-btn:active {
-            transform: scale(0.95);
-        }
-
-        .carousel-dots {
-            display: flex;
-            gap: 12px;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        .carousel-dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: var(--text-tertiary);
-            border: none;
-            cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .carousel-dot.active {
-            background: var(--purple-primary);
-            box-shadow: 0 0 15px var(--purple-glow);
-            transform: scale(1.3);
-        }
-
-        .carousel-dot:hover {
-            background: var(--purple-primary);
-            transform: scale(1.2);
+            height: 6px;
+            background: var(--red-primary);
+            border-radius: 4px;
+            box-shadow: 0 0 20px var(--red-glow);
+            transition: all 0.3s ease;
         }
 
         .download-section {
@@ -572,21 +510,21 @@
 
         .download-title {
             font-size: 2.2rem;
-            color: var(--gold-primary);
-            text-shadow: 0 0 30px var(--gold-glow);
+            color: var(--red-primary);
+            text-shadow: 0 0 30px var(--red-glow);
             margin: 0;
             letter-spacing: 4px;
         }
 
-        .free-button {
+        .plus-button {
             display: inline-flex;
             align-items: center;
             gap: 10px;
             padding: 12px 28px;
-            background: rgba(255, 26, 26, 0.08);
-            border: 2px solid var(--red-primary);
+            background: rgba(255, 215, 0, 0.08);
+            border: 2px solid var(--gold-primary);
             border-radius: 40px;
-            color: var(--red-primary);
+            color: var(--gold-primary);
             text-decoration: none;
             font-weight: 700;
             font-size: 0.9rem;
@@ -595,18 +533,18 @@
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             backdrop-filter: blur(8px);
             -webkit-backdrop-filter: blur(8px);
-            box-shadow: 0 0 20px rgba(255, 26, 26, 0.3);
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
         }
 
-        .free-button i {
+        .plus-button i {
             font-size: 1.1rem;
             transition: all 0.3s ease;
         }
 
-        .free-button:hover {
-            background: rgba(255, 26, 26, 0.15);
-            border-color: var(--red-primary);
-            box-shadow: 0 0 40px var(--red-glow);
+        .plus-button:hover {
+            background: rgba(255, 215, 0, 0.15);
+            border-color: var(--gold-primary);
+            box-shadow: 0 0 40px var(--gold-glow);
             transform: translateY(-3px) scale(1.05);
         }
 
@@ -615,7 +553,7 @@
             margin: 0 auto;
             background: rgba(10, 10, 10, 0.95);
             border-radius: 20px;
-            border: 1px solid rgba(157, 78, 221, 0.3);
+            border: 1px solid rgba(255, 26, 26, 0.3);
             backdrop-filter: blur(15px);
             -webkit-backdrop-filter: blur(15px);
             padding: 10px;
@@ -640,21 +578,21 @@
         }
 
         .dropdown-trigger:hover {
-            background: rgba(157, 78, 221, 0.1);
-            text-shadow: 0 0 15px var(--purple-glow);
+            background: rgba(255, 26, 26, 0.1);
+            text-shadow: 0 0 15px var(--red-glow);
         }
 
         .dropdown-trigger i:first-child {
-            color: var(--purple-primary);
-            text-shadow: 0 0 15px var(--purple-glow);
+            color: var(--red-primary);
+            text-shadow: 0 0 15px var(--red-glow);
             margin-right: 15px;
         }
 
         .dropdown-trigger i:last-child {
             transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
             font-size: 1.5rem;
-            color: var(--purple-primary);
-            text-shadow: 0 0 15px var(--purple-glow);
+            color: var(--red-primary);
+            text-shadow: 0 0 15px var(--red-glow);
         }
 
         .dropdown-trigger.active i:last-child {
@@ -679,7 +617,7 @@
 
         .download-option {
             background: rgba(20, 20, 20, 0.9);
-            border: 1px solid rgba(157, 78, 221, 0.2);
+            border: 1px solid rgba(255, 26, 26, 0.2);
             border-radius: 16px;
             padding: 25px;
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -691,13 +629,13 @@
 
         .download-option:hover {
             background: rgba(30, 30, 30, 0.95);
-            border-color: var(--purple-primary);
-            box-shadow: 0 0 40px rgba(157, 78, 221, 0.3);
+            border-color: var(--red-primary);
+            box-shadow: 0 0 40px rgba(255, 26, 26, 0.3);
             transform: translateY(-5px) scale(1.01);
         }
 
         .option-title {
-            color: var(--purple-primary);
+            color: var(--red-primary);
             font-size: 1.3rem;
             margin-bottom: 12px;
             display: flex;
@@ -707,8 +645,8 @@
         }
 
         .option-title i {
-            color: var(--purple-primary);
-            text-shadow: 0 0 15px var(--purple-glow);
+            color: var(--red-primary);
+            text-shadow: 0 0 15px var(--red-glow);
             font-size: 1.6rem;
         }
 
@@ -730,8 +668,8 @@
             display: inline-block;
             padding: 12px 28px;
             background: transparent;
-            color: var(--purple-primary);
-            border: 2px solid var(--purple-primary);
+            color: var(--red-primary);
+            border: 2px solid var(--red-primary);
             border-radius: 8px;
             text-decoration: none;
             font-weight: 700;
@@ -742,8 +680,29 @@
         }
 
         .download-link:hover {
-            background: rgba(157, 78, 221, 0.15);
-            box-shadow: 0 0 30px var(--purple-glow);
+            background: rgba(255, 26, 26, 0.15);
+            box-shadow: 0 0 30px var(--red-glow);
+            transform: translateY(-3px);
+        }
+
+        .view-raw-link {
+            display: inline-block;
+            padding: 12px 28px;
+            background: transparent;
+            color: var(--red-primary);
+            border: 2px solid var(--red-primary);
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.9rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            text-align: center;
+            letter-spacing: 2px;
+        }
+
+        .view-raw-link:hover {
+            background: rgba(255, 26, 26, 0.15);
+            box-shadow: 0 0 30px var(--red-glow);
             transform: translateY(-3px);
         }
 
@@ -751,8 +710,8 @@
             display: inline-block;
             padding: 12px 28px;
             background: transparent;
-            color: var(--purple-primary);
-            border: 2px solid var(--purple-primary);
+            color: var(--red-primary);
+            border: 2px solid var(--red-primary);
             border-radius: 8px;
             text-decoration: none;
             font-weight: 700;
@@ -763,155 +722,8 @@
         }
 
         .github-link:hover {
-            background: rgba(157, 78, 221, 0.15);
-            box-shadow: 0 0 30px var(--purple-glow);
-            transform: translateY(-3px);
-        }
-
-        .key-link {
-            display: inline-block;
-            padding: 12px 28px;
-            background: transparent;
-            color: var(--gold-primary);
-            border: 2px solid var(--gold-primary);
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 0.9rem;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            text-align: center;
-            letter-spacing: 2px;
-        }
-
-        .key-link:hover {
-            background: rgba(255, 215, 0, 0.15);
-            box-shadow: 0 0 30px var(--gold-glow);
-            transform: translateY(-3px);
-        }
-
-        .paused-modal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.95);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            z-index: 99999;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            padding: 15px;
-        }
-
-        .paused-modal.active {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .paused-modal-content {
-            background: rgba(10, 10, 10, 0.98);
-            border: 2px solid var(--purple-primary);
-            border-radius: 20px;
-            padding: 25px;
-            max-width: 500px;
-            width: 100%;
-            position: relative;
-            box-shadow: 0 0 50px var(--purple-glow);
-            transform: scale(0.9);
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            max-height: 90vh;
-            overflow-y: auto;
-        }
-
-        .paused-modal.active .paused-modal-content {
-            transform: scale(1);
-        }
-
-        .paused-modal-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        .paused-modal-title {
-            color: var(--purple-primary);
-            font-size: 1.4rem;
-            text-shadow: 0 0 20px var(--purple-glow);
-            letter-spacing: 3px;
-            word-break: break-word;
-        }
-
-        .paused-modal-close {
-            background: transparent;
-            border: 2px solid var(--purple-primary);
-            color: var(--purple-primary);
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-        }
-
-        .paused-modal-close:hover {
-            background: rgba(157, 78, 221, 0.2);
-            transform: rotate(90deg);
-            box-shadow: 0 0 25px var(--purple-glow);
-        }
-
-        .paused-modal-body {
-            color: var(--text-primary);
-            line-height: 1.6;
-            margin-bottom: 20px;
-            font-size: 0.95rem;
-        }
-
-        .paused-info {
-            background: rgba(157, 78, 221, 0.08);
-            border-left: 4px solid var(--purple-primary);
-            padding: 15px;
-            border-radius: 8px;
-            margin-top: 15px;
-        }
-
-        .paused-modal-footer {
-            text-align: center;
-            padding-top: 15px;
-            border-top: 1px solid rgba(157, 78, 221, 0.2);
-        }
-
-        .paused-modal-button {
-            display: inline-block;
-            padding: 12px 30px;
-            background: transparent;
-            color: var(--purple-primary);
-            border: 2px solid var(--purple-primary);
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 0.9rem;
-            letter-spacing: 2px;
-            width: auto;
-            min-width: 160px;
-        }
-
-        .paused-modal-button:hover {
-            background: rgba(157, 78, 221, 0.15);
-            box-shadow: 0 0 30px var(--purple-glow);
+            background: rgba(255, 26, 26, 0.15);
+            box-shadow: 0 0 30px var(--red-glow);
             transform: translateY(-3px);
         }
 
@@ -965,7 +777,7 @@
             left: 0;
             width: 40px;
             height: 2px;
-            background: var(--purple-primary);
+            background: var(--red-primary);
         }
 
         .footer-links ul {
@@ -985,9 +797,9 @@
         }
 
         .footer-links a:hover {
-            color: var(--purple-primary);
+            color: var(--red-primary);
             transform: translateX(8px);
-            text-shadow: 0 0 8px var(--purple-dim);
+            text-shadow: 0 0 8px var(--red-dim);
         }
 
         .copyright {
@@ -997,6 +809,142 @@
             color: var(--text-tertiary);
             font-size: 0.8rem;
             letter-spacing: 1px;
+        }
+
+        .inactive-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            z-index: 99999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            padding: 15px;
+        }
+
+        .inactive-modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .inactive-modal-content {
+            background: rgba(10, 10, 10, 0.98);
+            border: 2px solid var(--orange-primary);
+            border-radius: 20px;
+            padding: 25px;
+            max-width: 500px;
+            width: 100%;
+            position: relative;
+            box-shadow: 0 0 50px var(--orange-glow);
+            transform: scale(0.9);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .inactive-modal.active .inactive-modal-content {
+            transform: scale(1);
+        }
+
+        .inactive-modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .inactive-modal-title {
+            color: var(--orange-primary);
+            font-size: 1.4rem;
+            text-shadow: 0 0 20px var(--orange-glow);
+            letter-spacing: 3px;
+            word-break: break-word;
+        }
+
+        .inactive-modal-close {
+            background: transparent;
+            border: 2px solid var(--orange-primary);
+            color: var(--orange-primary);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .inactive-modal-close:hover {
+            background: rgba(255, 158, 0, 0.2);
+            transform: rotate(90deg);
+            box-shadow: 0 0 25px var(--orange-glow);
+        }
+
+        .inactive-modal-body {
+            color: var(--text-primary);
+            line-height: 1.6;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+
+        .inactive-warning {
+            background: rgba(255, 158, 0, 0.08);
+            border-left: 4px solid var(--orange-primary);
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+        }
+
+        .inactive-warning ul {
+            margin-left: 18px;
+            margin-top: 8px;
+            font-size: 0.85rem;
+        }
+
+        .inactive-warning li {
+            margin-bottom: 5px;
+        }
+
+        .inactive-modal-footer {
+            text-align: center;
+            padding-top: 15px;
+            border-top: 1px solid rgba(255, 158, 0, 0.2);
+        }
+
+        .inactive-modal-button {
+            display: inline-block;
+            padding: 12px 30px;
+            background: transparent;
+            color: var(--orange-primary);
+            border: 2px solid var(--orange-primary);
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            width: auto;
+            min-width: 160px;
+        }
+
+        .inactive-modal-button:hover {
+            background: rgba(255, 158, 0, 0.15);
+            box-shadow: 0 0 30px var(--orange-glow);
+            transform: translateY(-3px);
         }
 
         @keyframes fadeInUp {
@@ -1065,7 +1013,7 @@
             .status-badge {
                 margin-right: 0;
             }
-            .paused-modal-title {
+            .inactive-modal-title {
                 font-size: 1.6rem;
             }
         }
@@ -1126,38 +1074,33 @@
                 flex-direction: column;
                 width: 100%;
             }
-            .download-link, .github-link, .key-link {
+            .download-link, .view-raw-link, .github-link {
                 width: 100%;
             }
-            .free-button {
+            .plus-button {
                 padding: 10px 20px;
                 font-size: 0.8rem;
             }
             .download-header {
                 gap: 15px;
             }
-            .paused-modal-content {
+            .inactive-modal-content {
                 padding: 20px;
                 max-height: 80vh;
             }
-            .paused-modal-title {
+            .inactive-modal-title {
                 font-size: 1.2rem;
             }
-            .paused-modal-body {
+            .inactive-modal-body {
                 font-size: 0.85rem;
             }
-            .paused-info ul {
+            .inactive-warning ul {
                 font-size: 0.8rem;
             }
-            .paused-modal-button {
+            .inactive-modal-button {
                 padding: 10px 20px;
                 font-size: 0.85rem;
                 min-width: 140px;
-            }
-            .carousel-btn {
-                width: 45px;
-                height: 45px;
-                font-size: 1.1rem;
             }
         }
 
@@ -1181,7 +1124,7 @@
                 flex-direction: column;
                 gap: 12px;
             }
-            .free-button {
+            .plus-button {
                 width: 100%;
                 justify-content: center;
             }
@@ -1192,20 +1135,23 @@
             .dropdown-trigger i:last-child {
                 font-size: 1.2rem;
             }
-            .paused-modal-content {
+            .inactive-modal-content {
                 padding: 18px;
             }
-            .paused-modal-title {
+            .inactive-modal-title {
                 font-size: 1.1rem;
                 letter-spacing: 2px;
             }
-            .paused-modal-body {
+            .inactive-modal-body {
                 font-size: 0.8rem;
             }
-            .paused-info {
+            .inactive-warning {
                 padding: 12px;
             }
-            .paused-modal-button {
+            .inactive-warning ul {
+                margin-left: 15px;
+            }
+            .inactive-modal-button {
                 padding: 10px 18px;
                 font-size: 0.8rem;
                 min-width: 120px;
@@ -1218,18 +1164,6 @@
                 font-size: 1.3rem;
                 letter-spacing: 5px;
             }
-            .carousel-nav {
-                gap: 15px;
-            }
-            .carousel-btn {
-                width: 40px;
-                height: 40px;
-                font-size: 1rem;
-            }
-            .carousel-dot {
-                width: 10px;
-                height: 10px;
-            }
         }
     </style>
 </head>
@@ -1241,33 +1175,31 @@
         </div>
     </div>
 
-    <div class="paused-modal" id="pausedModal">
-        <div class="paused-modal-content">
-            <div class="paused-modal-header">
-                <h2 class="paused-modal-title">DEVELOPMENT PAUSED</h2>
-                <button class="paused-modal-close" id="pausedModalClose">
+    <div class="inactive-modal" id="inactiveModal">
+        <div class="inactive-modal-content">
+            <div class="inactive-modal-header">
+                <h2 class="inactive-modal-title">INACTIVE TOOL</h2>
+                <button class="inactive-modal-close" id="inactiveModalClose">
                     <i class="fas fa-times"></i>
                 </button>
             </div>
-            <div class="paused-modal-body">
-                <p><strong>Nexcord Plus development is temporarily paused.</strong></p>
-                <p>We are currently focusing on other projects and internal restructuring. The tool remains fully functional with active keys continuing to work.</p>
-                
-                <div class="paused-info">
-                    <p><strong>Current Status:</strong></p>
-                    <ul style="margin-left: 18px; margin-top: 8px;">
-                        <li>✅ All existing keys are valid</li>
-                        <li>✅ Tool remains fully functional</li>
-                        <li>⏸️ No new updates planned currently</li>
-                        <li>🛠️ Key system still active</li>
-                        <li>💬 Support available on Discord</li>
+            <div class="inactive-modal-body">
+                <p><strong>Nexcord Basic is no longer under active development.</strong></p>
+                <p>This project has been discontinued and will not receive any updates, bug fixes, or new features in the near future.</p>
+                <div class="inactive-warning">
+                    <p><strong>Important Information:</strong></p>
+                    <ul>
+                        <li>No further development planned</li>
+                        <li>No bug fixes will be released</li>
+                        <li>No new features will be added</li>
+                        <li>Limited or no support available</li>
+                        <li>Use at your own risk</li>
                     </ul>
                 </div>
-                
-                <p style="margin-top: 15px;">You can still purchase keys and use Nexcord Plus without limitations. Development will resume at a later date.</p>
+                <p style="margin-top: 15px;">The tool is provided "as-is" for educational purposes only. Consider using alternative tools or the premium version (Nexcord Plus) for active development and support.</p>
             </div>
-            <div class="paused-modal-footer">
-                <button class="paused-modal-button" id="pausedModalOk">
+            <div class="inactive-modal-footer">
+                <button class="inactive-modal-button" id="inactiveModalOk">
                     UNDERSTOOD
                 </button>
             </div>
@@ -1285,12 +1217,12 @@
             <a href="https://whitehousepage.github.io/">Home</a>
             <a href="https://whitehousepage.github.io/#tools">Tools</a>
             <a href="https://whitehousepage.github.io/#about">About</a>
-            <a href="https://discord.gg/sMEkW6M4MQ" target="_blank">Join Discord</a>
+            <a href="https://discord.gg/DbNQgMWJ8G" target="_blank">Join Discord</a>
         </div>
         
         <div style="display: flex; align-items: center; gap: 15px;">
             <div class="status-badge" id="statusBadge">
-                PAUSED
+                INACTIVE
             </div>
             <button class="mobile-menu-btn" id="mobileMenuBtn">
                 <i class="fas fa-bars"></i>
@@ -1319,7 +1251,7 @@
             <a href="https://whitehousepage.github.io/#about" class="mobile-menu-link">
                 <i class="fas fa-info-circle"></i> About
             </a>
-            <a href="https://discord.gg/sMEkW6M4MQ" target="_blank" class="mobile-menu-link">
+            <a href="https://discord.gg/DbNQgMWJ8G" target="_blank" class="mobile-menu-link">
                 <i class="fab fa-discord"></i> Join Discord
             </a>
         </div>
@@ -1328,26 +1260,22 @@
     <div class="main-content">
         <section class="hero-section">
             <div class="hero-bg"></div>
-            <h1 class="tool-title">Nexcord Plus</h1>
-            <p class="tool-subtitle">Premium Discord utility tool by White House — advanced features, priority support, and regular updates.</p>
+            <h1 class="tool-title">Nexcord Basic</h1>
+            <p class="tool-subtitle">Professional Discord utility tool by White House — open-source, community-driven, and completely free.</p>
             
             <div class="tool-description">
-                <p><strong class="highlight-gold">Nexcord Plus</strong> is the premium version of Nexcord Basic, developed in 2025 by <strong class="highlight-gold">Nexoo</strong>, founder and owner of White House. Built on the same foundation as Nexcord Basic but with enhanced features, faster performance, and exclusive tools.</p>
-                <p>To use <strong class="highlight-gold">Nexcord Plus</strong>, you need a valid license key. Keys are available on the official <strong class="highlight-purple">White House Discord server</strong> for only <strong class="highlight-gold">$3.99 USD per month</strong>. Simply create a "Nexcord Key" ticket, select your Nexcord version, and you're ready to go!</p>
-                <p><strong class="highlight-gold">Nexcord Plus</strong> offers advanced server management, faster execution, premium features, and direct support. All keys are verified instantly through our secure key system.</p>
+                <p><strong class="highlight-red">Nexcord Basic</strong> is a professional-grade Discord tool developed in 2023 by <strong class="highlight-red">Nexoo</strong>, founder and owner of White House. Originally created as a lightweight alternative, Nexcord Basic evolved into a powerful open-source solution for server management and utility operations.</p>
+                <p>As an <strong class="highlight-red">open-source project</strong>, Nexcord Basic is provided freely to the community. <strong class="highlight-red">Version 2025</strong> is a realistic release — expect bugs, experimental features, and raw performance. This is not a polished paid product; this is real development.</p>
+                <p><strong class="highlight-red">Nexcord Basic</strong> serves as a robust free alternative to <strong>Nexcord+</strong> (the premium paid version). We believe in accessibility first. All tools are provided as-is with full transparency. Built by Nexoo, maintained by the White House team, and powered by the community.</p>
             </div>
         </section>
 
         <section class="screenshot-section">
-            <h2 class="section-title">SCREENSHOTS</h2>
-            <div class="screenshot-carousel">
-                <div class="screenshot-container">
-                    <img src="https://files.catbox.moe/nvcwzs.png" alt="Nexcord Plus Screenshot 1" class="screenshot-image" id="screenshotImage">
-                </div>
-                <div class="carousel-nav">
-                    <button class="carousel-btn" id="prevBtn"><i class="fas fa-chevron-left"></i></button>
-                    <div class="carousel-dots" id="carouselDots"></div>
-                    <button class="carousel-btn" id="nextBtn"><i class="fas fa-chevron-right"></i></button>
+            <h2 class="section-title">SCREENSHOT</h2>
+            <div class="screenshot-container">
+                <img src="https://www.dropbox.com/scl/fi/9hgwzbhf15xb49ibew2q6/image.png?rlkey=81yhw7gfjxjdvmq4ytewe0mmy&st=f1v3ljui&dl=1" alt="Nexcord Basic Screenshot" class="screenshot-image" id="screenshotImage">
+                <div class="single-indicator">
+                    <div class="indicator-single"></div>
                 </div>
             </div>
         </section>
@@ -1355,8 +1283,8 @@
         <section class="download-section">
             <div class="download-header">
                 <h2 class="download-title">DOWNLOAD</h2>
-                <a href="https://whitehousepage.github.io/NexcordBasic" class="free-button" target="_blank">
-                    <i class="fas fa-download"></i> Nexcord Free
+                <a href="https://whitehousepage.github.io/NexcordPlus" class="plus-button" target="_blank">
+                    <i class="fas fa-crown"></i> Nexcord+
                 </a>
             </div>
             
@@ -1370,15 +1298,15 @@
                     <div class="download-options-grid">
                         <div class="download-option">
                             <h3 class="option-title">
-                                <i class="fas fa-crown"></i> NexcordPlus.exe
+                                <i class="fab fa-python"></i> Nexcord.py
                             </h3>
-                            <p class="option-desc">Direct launcher executable. Latest stable build, lightweight, ready to run. Requires license key.</p>
+                            <p class="option-desc">Direct Python script file. Latest stable build, self-contained, ready to execute.</p>
                             <div class="button-group">
-                                <a href="https://www.dropbox.com/scl/fi/ssincrtspnhxw1oygcx0l/NexCordPlusLauncher.exe?rlkey=mnfjyj35q7tsxv5f2t0ler941&st=c05i3lsb&dl=1" class="download-link" download>
-                                    <i class="fas fa-download"></i> DOWNLOAD (.EXE)
+                                <a href="https://www.dropbox.com/scl/fi/onkgww3g86615wwi6fyub/Nexcord.py?rlkey=u6ca65djb0wgnon3du2jqv50a&st=gukw8pdr&dl=1" class="download-link" download>
+                                    <i class="fas fa-download"></i> DOWNLOAD (.PY)
                                 </a>
-                                <a href="https://discord.gg/sMEkW6M4MQ" target="_blank" class="key-link">
-                                    <i class="fas fa-key"></i> GET A KEY
+                                <a href="https://www.dropbox.com/scl/fi/onkgww3g86615wwi6fyub/Nexcord.py?rlkey=u6ca65djb0wgnon3du2jqv50a&st=gukw8pdr&dl=1" class="view-raw-link" target="_blank">
+                                    <i class="fas fa-code"></i> VIEW RAW
                                 </a>
                             </div>
                         </div>
@@ -1387,18 +1315,18 @@
                             <h3 class="option-title">
                                 <i class="fab fa-github"></i> GitHub Repository
                             </h3>
-                            <p class="option-desc">Official premium repository. View source code, report issues, and track development.</p>
-                            <a href="https://github.com/DaNexoo/NexcordPlus/" target="_blank" class="github-link">
+                            <p class="option-desc">Official open-source repository. View source code, report issues, fork, and contribute.</p>
+                            <a href="https://github.com/DaNexoo/Nexcord" target="_blank" class="github-link">
                                 <i class="fab fa-github"></i> OPEN GITHUB
                             </a>
                         </div>
                         
                         <div class="download-option">
                             <h3 class="option-title">
-                                <i class="fas fa-file-archive"></i> Nexcord+ 2.8.6.zip
+                                <i class="fas fa-file-archive"></i> Nexcord-Basic-2.1.1.zip
                             </h3>
-                            <p class="option-desc">Complete package. Includes launcher, dependencies, and quick-start guide.</p>
-                            <a href="https://www.dropbox.com/scl/fi/ssincrtspnhxw1oygcx0l/NexCordPlusLauncher.exe?rlkey=mnfjyj35q7tsxv5f2t0ler941&st=c05i3lsb&dl=1" class="download-link" download>
+                            <p class="option-desc">Complete package. Includes Python script, dependencies list, and quick-start guide.</p>
+                            <a href="https://www.dropbox.com/scl/fi/h174r3l63cqnljzrb9dtw/wh-nexcord-2.1.1.zip?rlkey=dkqy10zp6sseqwg72toe2rs7k&st=1egfez7s&dl=1" class="download-link" download>
                                 <i class="fas fa-download"></i> DOWNLOAD (.ZIP)
                             </a>
                         </div>
@@ -1414,10 +1342,10 @@
                 <div class="footer-logo">
                     <img src="wh.png" alt="White House Logo" class="footer-logo-img">
                 </div>
-                <p style="color: var(--text-tertiary); margin-bottom: 20px; font-size: 0.9rem; line-height: 1.7;">White House is a professional digital tools collective. We develop premium and open-source utilities with a focus on quality and performance.</p>
+                <p style="color: var(--text-tertiary); margin-bottom: 20px; font-size: 0.9rem; line-height: 1.7;">White House is a professional digital tools collective. We develop open-source utilities with a focus on transparency and performance.</p>
                 <div style="display: flex; gap: 20px; justify-content: center;">
                     <a href="https://github.com/danexoo/" target="_blank" style="color: var(--text-tertiary); font-size: 1.4rem; transition: all 0.3s ease;"><i class="fab fa-github"></i></a>
-                    <a href="https://discord.gg/sMEkW6M4MQ" target="_blank" style="color: var(--text-tertiary); font-size: 1.4rem; transition: all 0.3s ease;"><i class="fab fa-discord"></i></a>
+                    <a href="https://discord.gg/DbNQgMWJ8G" target="_blank" style="color: var(--text-tertiary); font-size: 1.4rem; transition: all 0.3s ease;"><i class="fab fa-discord"></i></a>
                 </div>
             </div>
             
@@ -1427,7 +1355,7 @@
                     <li><a href="https://whitehousepage.github.io/">Home</a></li>
                     <li><a href="https://whitehousepage.github.io/#tools">Tools</a></li>
                     <li><a href="https://whitehousepage.github.io/#about">About</a></li>
-                    <li><a href="https://discord.gg/sMEkW6M4MQ" target="_blank">Join Discord</a></li>
+                    <li><a href="https://discord.gg/DbNQgMWJ8G" target="_blank">Join Discord</a></li>
                 </ul>
             </div>
             
@@ -1435,8 +1363,8 @@
                 <h4>Products</h4>
                 <ul>
                     <li><a href="#">WHASH (Password Cracker)</a></li>
-                    <li><a href="https://whitehousepage.github.io/NexcordBasic">Nexcord Basic (Free)</a></li>
-                    <li><a href="#">Nexcord Plus (Premium)</a></li>
+                    <li><a href="#">Nexcord Basic (Free)</a></li>
+                    <li><a href="https://whitehousepage.github.io/NexcordPlus" target="_blank">Nexcord+ (Premium)</a></li>
                 </ul>
             </div>
         </div>
@@ -1449,9 +1377,9 @@
     <script>
         (function() {
             const loadingScreen = document.getElementById('loadingScreen');
-            const pausedModal = document.getElementById('pausedModal');
-            const pausedModalClose = document.getElementById('pausedModalClose');
-            const pausedModalOk = document.getElementById('pausedModalOk');
+            const inactiveModal = document.getElementById('inactiveModal');
+            const inactiveModalClose = document.getElementById('inactiveModalClose');
+            const inactiveModalOk = document.getElementById('inactiveModalOk');
             const statusBadge = document.getElementById('statusBadge');
             const mobileMenuBtn = document.getElementById('mobileMenuBtn');
             const mobileMenu = document.getElementById('mobileMenu');
@@ -1460,77 +1388,16 @@
             const dropdownTriggerBtn = document.getElementById('dropdownTriggerBtn');
             const downloadDropdown = document.getElementById('downloadDropdown');
             const dropdownArrow = document.getElementById('dropdownArrow');
-            
-            const images = [
-                'https://files.catbox.moe/nvcwzs.png',
-                'https://files.catbox.moe/dbotb2.png',
-                'https://files.catbox.moe/aob6eg.png'
-            ];
-            
-            let currentIndex = 0;
-            const screenshotImg = document.getElementById('screenshotImage');
-            const carouselDots = document.getElementById('carouselDots');
-            let autoSlideInterval;
-
-            function createDots() {
-                carouselDots.innerHTML = '';
-                images.forEach((_, index) => {
-                    const dot = document.createElement('button');
-                    dot.classList.add('carousel-dot');
-                    if (index === currentIndex) dot.classList.add('active');
-                    dot.addEventListener('click', () => {
-                        currentIndex = index;
-                        updateScreenshot();
-                        resetAutoSlide();
-                    });
-                    carouselDots.appendChild(dot);
-                });
-            }
-
-            function updateScreenshot() {
-                screenshotImg.style.opacity = '0';
-                setTimeout(() => {
-                    screenshotImg.src = images[currentIndex];
-                    screenshotImg.style.opacity = '1';
-                    updateDots();
-                }, 300);
-            }
-
-            function updateDots() {
-                const dots = document.querySelectorAll('.carousel-dot');
-                dots.forEach((dot, index) => {
-                    dot.classList.toggle('active', index === currentIndex);
-                });
-            }
-
-            function nextSlide() {
-                currentIndex = (currentIndex + 1) % images.length;
-                updateScreenshot();
-            }
-
-            function prevSlide() {
-                currentIndex = (currentIndex - 1 + images.length) % images.length;
-                updateScreenshot();
-            }
-
-            function startAutoSlide() {
-                autoSlideInterval = setInterval(nextSlide, 2000);
-            }
-
-            function resetAutoSlide() {
-                clearInterval(autoSlideInterval);
-                startAutoSlide();
-            }
 
             setTimeout(() => {
                 loadingScreen.classList.add('hidden');
                 setTimeout(() => {
-                    pausedModal.classList.add('active');
+                    inactiveModal.classList.add('active');
                 }, 400);
             }, 1800);
 
-            function closePausedModal() {
-                pausedModal.classList.remove('active');
+            function closeInactiveModal() {
+                inactiveModal.classList.remove('active');
             }
 
             function toggleMobileMenu() {
@@ -1546,12 +1413,12 @@
                 dropdownArrow.style.transform = downloadDropdown.classList.contains('show') ? 'rotate(180deg)' : 'rotate(0deg)';
             }
 
-            pausedModalClose.addEventListener('click', closePausedModal);
-            pausedModalOk.addEventListener('click', closePausedModal);
-            statusBadge.addEventListener('click', () => pausedModal.classList.add('active'));
+            inactiveModalClose.addEventListener('click', closeInactiveModal);
+            inactiveModalOk.addEventListener('click', closeInactiveModal);
+            statusBadge.addEventListener('click', () => inactiveModal.classList.add('active'));
             
-            pausedModal.addEventListener('click', (e) => {
-                if (e.target === pausedModal) closePausedModal();
+            inactiveModal.addEventListener('click', (e) => {
+                if (e.target === inactiveModal) closeInactiveModal();
             });
 
             mobileMenuBtn.addEventListener('click', toggleMobileMenu);
@@ -1576,30 +1443,17 @@
                 }
             });
 
-            document.getElementById('nextBtn').addEventListener('click', () => {
-                nextSlide();
-                resetAutoSlide();
-            });
-            
-            document.getElementById('prevBtn').addEventListener('click', () => {
-                prevSlide();
-                resetAutoSlide();
-            });
-
-            screenshotImg.addEventListener('mouseenter', function() {
+            const screenshot = document.getElementById('screenshotImage');
+            screenshot.addEventListener('mouseenter', function() {
                 this.style.transform = 'scale(1.02)';
-                this.style.borderColor = 'var(--purple-primary)';
-                this.style.boxShadow = '0 0 70px var(--purple-glow)';
+                this.style.borderColor = 'var(--red-primary)';
+                this.style.boxShadow = '0 0 70px var(--red-glow)';
             });
-            
-            screenshotImg.addEventListener('mouseleave', function() {
+            screenshot.addEventListener('mouseleave', function() {
                 this.style.transform = 'scale(1)';
-                this.style.borderColor = 'rgba(157, 78, 221, 0.5)';
-                this.style.boxShadow = '0 0 40px rgba(157, 78, 221, 0.4)';
+                this.style.borderColor = 'rgba(255, 26, 26, 0.5)';
+                this.style.boxShadow = '0 0 40px rgba(255, 26, 26, 0.4)';
             });
-
-            createDots();
-            startAutoSlide();
         })();
     </script>
 </body>
