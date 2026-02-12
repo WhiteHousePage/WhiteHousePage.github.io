@@ -1,0 +1,1616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <title>White House | Nexcord Plus</title>
+    <link rel="icon" type="image/png" href="wh.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Roboto+Mono:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --pure-black: #000000;
+            --black-1: #030303;
+            --black-2: #080808;
+            --black-3: #0c0c0c;
+            --black-4: #121212;
+            --gold-primary: #ffd700;
+            --gold-glow: rgba(255, 215, 0, 0.9);
+            --gold-dim: rgba(255, 215, 0, 0.3);
+            --paused-primary: #9d4edd;
+            --paused-glow: rgba(157, 78, 221, 0.9);
+            --text-primary: #ffffff;
+            --text-secondary: #cccccc;
+            --text-tertiary: #999999;
+            --discord: #5865f2;
+            --discord-glow: rgba(88, 101, 242, 0.9);
+            --accent-white: #ffffff;
+            --accent-glow: rgba(255, 255, 255, 0.7);
+            --red-primary: #ff1a1a;
+            --red-glow: rgba(255, 26, 26, 0.9);
+        }
+
+        body {
+            font-family: 'Roboto Mono', monospace;
+            background: var(--pure-black);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--black-2);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--gold-primary);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--gold-glow);
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px;
+        }
+
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--pure-black);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            flex-direction: column;
+        }
+
+        .loading-screen.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .loading-logo {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            text-align: center;
+        }
+
+        .loading-icon {
+            width: 120px;
+            height: 120px;
+            margin-bottom: 25px;
+            filter: drop-shadow(0 0 5px black);
+            animation: loadingPulse 1.8s infinite alternate cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .loading-text {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.6rem;
+            letter-spacing: 8px;
+            color: var(--text-primary);
+            text-transform: uppercase;
+            position: relative;
+            text-align: center;
+            width: 100%;
+            transform: translateX(12px);
+        }
+
+        .loading-dots {
+            display: inline-block;
+            width: 24px;
+            overflow: hidden;
+            vertical-align: bottom;
+            animation: loadingDots 1.5s infinite;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 6%;
+            background: rgba(0, 0, 0, 0.98);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            height: 75px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.6rem;
+            font-weight: 900;
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .logo:hover {
+            text-shadow: 0 0 8px var(--accent-glow);
+        }
+
+        .logo-img {
+            width: 42px;
+            height: 42px;
+            margin-right: 12px;
+            filter: drop-shadow(0 0 3px black);
+            transition: all 0.3s ease;
+        }
+
+        .desktop-nav {
+            display: flex;
+            gap: 25px;
+            margin-left: auto;
+            margin-right: 30px;
+        }
+
+        .desktop-nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            padding: 8px 16px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            position: relative;
+            text-transform: uppercase;
+        }
+
+        .desktop-nav a:hover {
+            color: var(--text-primary);
+            text-shadow: 0 0 8px var(--gold-glow);
+            background: rgba(255, 215, 0, 0.1);
+        }
+
+        .status-badge {
+            display: inline-block;
+            background: rgba(157, 78, 221, 0.08);
+            color: var(--paused-primary);
+            padding: 10px 22px;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            border: 1.5px solid rgba(157, 78, 221, 0.4);
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            box-shadow: 0 0 15px rgba(157, 78, 221, 0.2);
+            margin-right: 0;
+        }
+
+        .status-badge:hover {
+            background: rgba(157, 78, 221, 0.15);
+            border-color: var(--paused-primary);
+            box-shadow: 0 0 30px var(--paused-glow);
+            transform: scale(1.05);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 1.8rem;
+            cursor: pointer;
+            padding: 8px;
+            transition: all 0.3s ease;
+            margin-left: 15px;
+        }
+
+        .mobile-menu-btn:hover {
+            color: var(--gold-primary);
+            transform: rotate(90deg);
+        }
+
+        .mobile-menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.92);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            z-index: 9998;
+            display: none;
+        }
+
+        .mobile-menu-overlay.active {
+            display: block;
+        }
+
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -300px;
+            width: 280px;
+            height: 100vh;
+            background: rgba(3, 3, 3, 0.98);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            z-index: 9999;
+            transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border-left: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .mobile-menu.active {
+            right: 0;
+        }
+
+        .mobile-menu-header {
+            padding: 22px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .mobile-menu-header img {
+            width: 38px;
+            height: 38px;
+            filter: drop-shadow(0 0 3px black);
+        }
+
+        .mobile-close-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: var(--text-primary);
+            font-size: 1.2rem;
+            cursor: pointer;
+            padding: 8px 12px;
+            border-radius: 50%;
+            width: 42px;
+            height: 42px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-close-btn:hover {
+            background: rgba(255, 215, 0, 0.2);
+            border-color: var(--gold-primary);
+            color: var(--gold-primary);
+            transform: rotate(90deg);
+            box-shadow: 0 0 25px var(--gold-glow);
+        }
+
+        .mobile-menu-content {
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .mobile-menu-link {
+            display: flex;
+            align-items: center;
+            padding: 16px 20px;
+            color: var(--text-primary);
+            text-decoration: none;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.05);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            font-size: 1rem;
+            font-weight: 500;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .mobile-menu-link i {
+            margin-right: 18px;
+            width: 22px;
+            text-align: center;
+            font-size: 1.2rem;
+            color: var(--gold-primary);
+        }
+
+        .mobile-menu-link:hover {
+            background: rgba(255, 215, 0, 0.1);
+            border-color: var(--gold-primary);
+            transform: translateX(8px);
+        }
+
+        body.no-scroll {
+            overflow: hidden;
+        }
+
+        .main-content {
+            padding-top: 95px;
+            min-height: 100vh;
+        }
+
+        .hero-section {
+            text-align: center;
+            padding: 70px 25px 50px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 15% 30%, rgba(255, 215, 0, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 85% 70%, rgba(255, 215, 0, 0.04) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(255, 215, 0, 0.02) 0%, transparent 70%);
+            z-index: -1;
+        }
+
+        .tool-title {
+            font-size: 3rem;
+            color: var(--gold-primary);
+            text-shadow: 0 0 30px var(--gold-glow), 0 0 60px rgba(255, 215, 0, 0.5);
+            margin-bottom: 20px;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+            letter-spacing: 4px;
+        }
+
+        .tool-title:hover {
+            transform: scale(1.05);
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .tool-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 900px;
+            margin: 0 auto 20px;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.2s forwards;
+            padding: 0 20px;
+            line-height: 1.8;
+        }
+
+        .tool-description {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 25px;
+            background: rgba(255, 215, 0, 0.03);
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            border-radius: 16px;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.3s forwards;
+        }
+
+        .tool-description p {
+            color: var(--text-primary);
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+            line-height: 1.7;
+        }
+
+        .tool-description strong {
+            color: var(--gold-primary);
+            text-shadow: 0 0 8px var(--gold-glow);
+        }
+
+        .highlight-gold {
+            color: var(--gold-primary);
+            font-weight: 700;
+        }
+
+        .screenshot-section {
+            padding: 80px 25px;
+            text-align: center;
+            position: relative;
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            margin-bottom: 40px;
+            color: var(--text-primary);
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.4s forwards;
+            letter-spacing: 4px;
+        }
+
+        .screenshot-carousel {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+            opacity: 0;
+            transform: translateY(50px);
+            animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.5s forwards;
+            padding: 0 15px;
+        }
+
+        .screenshot-container {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            border-radius: 12px;
+        }
+
+        .screenshot-image {
+            width: 100%;
+            max-width: 1000px;
+            height: auto;
+            border-radius: 12px;
+            border: 2px solid rgba(255, 215, 0, 0.5);
+            box-shadow: 0 0 40px rgba(255, 215, 0, 0.4);
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.5s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            margin: 0 auto;
+            display: block;
+            cursor: pointer;
+            opacity: 1;
+        }
+
+        .screenshot-image:hover {
+            transform: scale(1.02);
+            border-color: var(--gold-primary);
+            box-shadow: 0 0 70px var(--gold-glow);
+        }
+
+        .hidden-image {
+            display: none;
+        }
+
+        .carousel-nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .carousel-btn {
+            background: rgba(255, 215, 0, 0.1);
+            border: 2px solid var(--gold-primary);
+            color: var(--gold-primary);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.3rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .carousel-btn:hover {
+            background: rgba(255, 215, 0, 0.2);
+            box-shadow: 0 0 30px var(--gold-glow);
+            transform: scale(1.1);
+        }
+
+        .carousel-btn:active {
+            transform: scale(0.95);
+        }
+
+        .carousel-dots {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .carousel-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--text-tertiary);
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .carousel-dot.active {
+            background: var(--gold-primary);
+            box-shadow: 0 0 15px var(--gold-glow);
+            transform: scale(1.3);
+        }
+
+        .carousel-dot:hover {
+            background: var(--gold-primary);
+            transform: scale(1.2);
+        }
+
+        .download-section {
+            padding: 60px 25px 80px;
+            text-align: center;
+        }
+
+        .download-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .download-title {
+            font-size: 2.2rem;
+            color: var(--gold-primary);
+            text-shadow: 0 0 30px var(--gold-glow);
+            margin: 0;
+            letter-spacing: 4px;
+        }
+
+        .free-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 28px;
+            background: rgba(255, 26, 26, 0.08);
+            border: 2px solid var(--red-primary);
+            border-radius: 40px;
+            color: var(--red-primary);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            box-shadow: 0 0 20px rgba(255, 26, 26, 0.3);
+        }
+
+        .free-button i {
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+
+        .free-button:hover {
+            background: rgba(255, 26, 26, 0.15);
+            border-color: var(--red-primary);
+            box-shadow: 0 0 40px var(--red-glow);
+            transform: translateY(-3px) scale(1.05);
+        }
+
+        .download-wrapper {
+            max-width: 850px;
+            margin: 0 auto;
+            background: rgba(10, 10, 10, 0.95);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            padding: 10px;
+        }
+
+        .dropdown-trigger {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 22px 30px;
+            background: transparent;
+            border: none;
+            color: var(--text-primary);
+            font-size: 1.3rem;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border-radius: 16px;
+        }
+
+        .dropdown-trigger:hover {
+            background: rgba(255, 215, 0, 0.1);
+            text-shadow: 0 0 15px var(--gold-glow);
+        }
+
+        .dropdown-trigger i:first-child {
+            color: var(--gold-primary);
+            text-shadow: 0 0 15px var(--gold-glow);
+            margin-right: 15px;
+        }
+
+        .dropdown-trigger i:last-child {
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            font-size: 1.5rem;
+            color: var(--gold-primary);
+            text-shadow: 0 0 15px var(--gold-glow);
+        }
+
+        .dropdown-trigger.active i:last-child {
+            transform: rotate(180deg);
+        }
+
+        .download-dropdown {
+            padding: 0 20px 20px;
+            display: none;
+        }
+
+        .download-dropdown.show {
+            display: block;
+            animation: slideDown 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .download-options-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .download-option {
+            background: rgba(20, 20, 20, 0.9);
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            border-radius: 16px;
+            padding: 25px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .download-option:hover {
+            background: rgba(30, 30, 30, 0.95);
+            border-color: var(--gold-primary);
+            box-shadow: 0 0 40px rgba(255, 215, 0, 0.3);
+            transform: translateY(-5px) scale(1.01);
+        }
+
+        .option-title {
+            color: var(--gold-primary);
+            font-size: 1.3rem;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .option-title i {
+            color: var(--gold-primary);
+            text-shadow: 0 0 15px var(--gold-glow);
+            font-size: 1.6rem;
+        }
+
+        .option-desc {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+            line-height: 1.7;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .download-link {
+            display: inline-block;
+            padding: 12px 28px;
+            background: transparent;
+            color: var(--gold-primary);
+            border: 2px solid var(--gold-primary);
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.9rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            text-align: center;
+            letter-spacing: 2px;
+        }
+
+        .download-link:hover {
+            background: rgba(255, 215, 0, 0.15);
+            box-shadow: 0 0 30px var(--gold-glow);
+            transform: translateY(-3px);
+        }
+
+        .github-link {
+            display: inline-block;
+            padding: 12px 28px;
+            background: transparent;
+            color: var(--gold-primary);
+            border: 2px solid var(--gold-primary);
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.9rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            text-align: center;
+            letter-spacing: 2px;
+        }
+
+        .github-link:hover {
+            background: rgba(255, 215, 0, 0.15);
+            box-shadow: 0 0 30px var(--gold-glow);
+            transform: translateY(-3px);
+        }
+
+        .key-link {
+            display: inline-block;
+            padding: 12px 28px;
+            background: transparent;
+            color: var(--paused-primary);
+            border: 2px solid var(--paused-primary);
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.9rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            text-align: center;
+            letter-spacing: 2px;
+        }
+
+        .key-link:hover {
+            background: rgba(157, 78, 221, 0.15);
+            box-shadow: 0 0 30px var(--paused-glow);
+            transform: translateY(-3px);
+        }
+
+        .paused-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            z-index: 99999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            padding: 15px;
+        }
+
+        .paused-modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .paused-modal-content {
+            background: rgba(10, 10, 10, 0.98);
+            border: 2px solid var(--paused-primary);
+            border-radius: 20px;
+            padding: 25px;
+            max-width: 500px;
+            width: 100%;
+            position: relative;
+            box-shadow: 0 0 50px var(--paused-glow);
+            transform: scale(0.9);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .paused-modal.active .paused-modal-content {
+            transform: scale(1);
+        }
+
+        .paused-modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .paused-modal-title {
+            color: var(--paused-primary);
+            font-size: 1.4rem;
+            text-shadow: 0 0 20px var(--paused-glow);
+            letter-spacing: 3px;
+        }
+
+        .paused-modal-close {
+            background: transparent;
+            border: 2px solid var(--paused-primary);
+            color: var(--paused-primary);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .paused-modal-close:hover {
+            background: rgba(157, 78, 221, 0.2);
+            transform: rotate(90deg);
+            box-shadow: 0 0 25px var(--paused-glow);
+        }
+
+        .paused-modal-body {
+            color: var(--text-primary);
+            line-height: 1.6;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+
+        .paused-info {
+            background: rgba(157, 78, 221, 0.08);
+            border-left: 4px solid var(--paused-primary);
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+        }
+
+        .paused-info ul {
+            margin-left: 18px;
+            margin-top: 8px;
+            font-size: 0.85rem;
+        }
+
+        .paused-info li {
+            margin-bottom: 5px;
+        }
+
+        .paused-modal-footer {
+            text-align: center;
+            padding-top: 15px;
+            border-top: 1px solid rgba(157, 78, 221, 0.2);
+        }
+
+        .paused-modal-button {
+            display: inline-block;
+            padding: 12px 30px;
+            background: transparent;
+            color: var(--paused-primary);
+            border: 2px solid var(--paused-primary);
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            width: auto;
+            min-width: 160px;
+        }
+
+        .paused-modal-button:hover {
+            background: rgba(157, 78, 221, 0.15);
+            box-shadow: 0 0 30px var(--paused-glow);
+            transform: translateY(-3px);
+        }
+
+        footer {
+            background: var(--black-2);
+            padding: 50px 25px 25px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .footer-logo-img {
+            width: 40px;
+            height: 40px;
+            filter: drop-shadow(0 0 3px black);
+            transition: all 0.3s ease;
+        }
+
+        .footer-logo-img:hover {
+            transform: scale(1.1);
+        }
+
+        .footer-links h4 {
+            color: var(--text-primary);
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            letter-spacing: 2px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .footer-links h4::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: var(--gold-primary);
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: var(--text-tertiary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .footer-links a:hover {
+            color: var(--gold-primary);
+            transform: translateX(8px);
+            text-shadow: 0 0 8px var(--gold-dim);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 25px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            color: var(--text-tertiary);
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes loadingPulse {
+            0% { 
+                transform: scale(1); 
+                filter: drop-shadow(0 0 5px black);
+            }
+            100% { 
+                transform: scale(1.1); 
+                filter: drop-shadow(0 0 8px black);
+            }
+        }
+
+        @keyframes loadingDots {
+            0%, 20% { content: "."; }
+            40% { content: ".."; }
+            60%, 100% { content: "..."; }
+        }
+
+        @media (min-width: 768px) {
+            .tool-title {
+                font-size: 4rem;
+            }
+            .tool-subtitle {
+                font-size: 1.2rem;
+            }
+            .section-title {
+                font-size: 2.5rem;
+            }
+            .footer-content {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 60px;
+                text-align: left;
+            }
+            .footer-logo {
+                justify-content: flex-start;
+            }
+            .download-options-grid {
+                gap: 25px;
+            }
+            .desktop-nav {
+                display: flex;
+            }
+            .status-badge {
+                margin-right: 0;
+            }
+            .paused-modal-title {
+                font-size: 1.6rem;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .desktop-nav {
+                display: none;
+            }
+            .mobile-menu-btn {
+                display: block;
+            }
+            .navbar {
+                padding: 15px 20px;
+            }
+            .logo {
+                font-size: 1.3rem;
+            }
+            .logo-img {
+                width: 35px;
+                height: 35px;
+            }
+            .status-badge {
+                padding: 8px 16px;
+                font-size: 0.7rem;
+            }
+            .hero-section {
+                padding: 50px 15px 30px;
+            }
+            .tool-title {
+                font-size: 2.2rem;
+            }
+            .tool-description {
+                padding: 20px;
+            }
+            .screenshot-section {
+                padding: 50px 15px;
+            }
+            .section-title {
+                font-size: 1.8rem;
+            }
+            .download-section {
+                padding: 40px 15px 60px;
+            }
+            .download-title {
+                font-size: 1.8rem;
+            }
+            .dropdown-trigger {
+                padding: 18px 20px;
+                font-size: 1.1rem;
+            }
+            .download-option {
+                padding: 20px;
+            }
+            .option-title {
+                font-size: 1.1rem;
+            }
+            .button-group {
+                flex-direction: column;
+                width: 100%;
+            }
+            .download-link, .github-link, .key-link {
+                width: 100%;
+            }
+            .free-button {
+                padding: 10px 20px;
+                font-size: 0.8rem;
+            }
+            .download-header {
+                gap: 15px;
+            }
+            .paused-modal-content {
+                padding: 20px;
+                max-height: 80vh;
+            }
+            .paused-modal-title {
+                font-size: 1.2rem;
+            }
+            .paused-modal-body {
+                font-size: 0.85rem;
+            }
+            .paused-info ul {
+                font-size: 0.8rem;
+            }
+            .paused-modal-button {
+                padding: 10px 20px;
+                font-size: 0.85rem;
+                min-width: 140px;
+            }
+            .carousel-btn {
+                width: 45px;
+                height: 45px;
+                font-size: 1.1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .tool-title {
+                font-size: 1.8rem;
+            }
+            .tool-subtitle {
+                font-size: 0.9rem;
+            }
+            .tool-description p {
+                font-size: 0.85rem;
+            }
+            .section-title {
+                font-size: 1.5rem;
+            }
+            .download-title {
+                font-size: 1.5rem;
+            }
+            .download-header {
+                flex-direction: column;
+                gap: 12px;
+            }
+            .free-button {
+                width: 100%;
+                justify-content: center;
+            }
+            .dropdown-trigger {
+                font-size: 0.95rem;
+                padding: 15px;
+            }
+            .dropdown-trigger i:last-child {
+                font-size: 1.2rem;
+            }
+            .paused-modal-content {
+                padding: 18px;
+            }
+            .paused-modal-title {
+                font-size: 1.1rem;
+                letter-spacing: 2px;
+            }
+            .paused-modal-body {
+                font-size: 0.8rem;
+            }
+            .paused-info {
+                padding: 12px;
+            }
+            .paused-modal-button {
+                padding: 10px 18px;
+                font-size: 0.8rem;
+                min-width: 120px;
+            }
+            .loading-icon {
+                width: 100px;
+                height: 100px;
+            }
+            .loading-text {
+                font-size: 1.3rem;
+                letter-spacing: 5px;
+            }
+            .carousel-nav {
+                gap: 15px;
+            }
+            .carousel-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
+            .carousel-dot {
+                width: 10px;
+                height: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loading-logo">
+            <img src="wh.png" alt="White House Logo" class="loading-icon">
+            <div class="loading-text">WHITE HOUSE<span class="loading-dots"></span></div>
+        </div>
+    </div>
+
+    <div class="paused-modal" id="pausedModal">
+        <div class="paused-modal-content">
+            <div class="paused-modal-header">
+                <h2 class="paused-modal-title">DEVELOPMENT PAUSED</h2>
+                <button class="paused-modal-close" id="pausedModalClose">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="paused-modal-body">
+                <p><strong>Nexcord Plus development is temporarily paused.</strong></p>
+                <p>We are currently focusing on other projects and internal restructuring. The tool remains fully functional with active keys continuing to work.</p>
+                <div class="paused-info">
+                    <p><strong>Current Status:</strong></p>
+                    <ul>
+                        <li>All existing keys are valid</li>
+                        <li>Tool remains fully functional</li>
+                        <li>No new updates planned currently</li>
+                        <li>Key system still active</li>
+                        <li>Support available on Discord</li>
+                    </ul>
+                </div>
+                <p style="margin-top: 15px;">You can still purchase keys and use Nexcord Plus without limitations. Development will resume at a later date.</p>
+            </div>
+            <div class="paused-modal-footer">
+                <button class="paused-modal-button" id="pausedModalOk">
+                    UNDERSTOOD
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
+
+    <nav class="navbar">
+        <a href="https://whitehousepage.github.io/" class="logo">
+            <img src="wh.png" alt="White House Logo" class="logo-img">
+        </a>
+        
+        <div class="desktop-nav">
+            <a href="https://whitehousepage.github.io/">Home</a>
+            <a href="https://whitehousepage.github.io/#tools">Tools</a>
+            <a href="https://whitehousepage.github.io/#about">About</a>
+            <a href="https://discord.gg/sMEkW6M4MQ" target="_blank">Join Discord</a>
+        </div>
+        
+        <div style="display: flex; align-items: center; gap: 15px;">
+            <div class="status-badge" id="statusBadge">
+                PAUSED
+            </div>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-header">
+            <div style="display: flex; align-items: center;">
+                <img src="wh.png" alt="Logo">
+                <span style="font-size: 1.2rem; margin-left: 10px; font-weight: bold; color: white;">WHITE HOUSE</span>
+            </div>
+            <button class="mobile-close-btn" id="mobileCloseBtn">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        
+        <div class="mobile-menu-content">
+            <a href="https://whitehousepage.github.io/" class="mobile-menu-link">
+                <i class="fas fa-home"></i> Home
+            </a>
+            <a href="https://whitehousepage.github.io/#tools" class="mobile-menu-link">
+                <i class="fas fa-tools"></i> Tools
+            </a>
+            <a href="https://whitehousepage.github.io/#about" class="mobile-menu-link">
+                <i class="fas fa-info-circle"></i> About
+            </a>
+            <a href="https://discord.gg/sMEkW6M4MQ" target="_blank" class="mobile-menu-link">
+                <i class="fab fa-discord"></i> Join Discord
+            </a>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <section class="hero-section">
+            <div class="hero-bg"></div>
+            <h1 class="tool-title">Nexcord Plus</h1>
+            <p class="tool-subtitle">Premium Discord utility tool by White House — advanced features, priority support, and regular updates.</p>
+            
+            <div class="tool-description">
+                <p><strong class="highlight-gold">Nexcord Plus</strong> is the premium version of Nexcord Basic, developed in 2025 by <strong class="highlight-gold">Nexoo</strong>, founder and owner of White House. Built on the same foundation as Nexcord Basic but with enhanced features, faster performance, and exclusive tools.</p>
+                <p>To use <strong class="highlight-gold">Nexcord Plus</strong>, you need a valid license key. Keys are available on the official <strong class="highlight-gold">White House Discord server</strong> for only <strong class="highlight-gold">$3.99 USD per month</strong>. Simply create a "Nexcord Key" ticket, select your Nexcord version, and you're ready to go!</p>
+                <p><strong class="highlight-gold">Nexcord Plus</strong> offers advanced server management, faster execution, premium features, and direct support. All keys are verified instantly through our secure key system.</p>
+            </div>
+        </section>
+
+        <section class="screenshot-section">
+            <h2 class="section-title">SCREENSHOTS</h2>
+            <div class="screenshot-carousel">
+                <div class="screenshot-container">
+                    <img src="https://files.catbox.moe/nvcwzs.png" alt="Nexcord Plus Screenshot 1" class="screenshot-image" id="screenshotImage">
+                </div>
+                <div class="carousel-nav">
+                    <button class="carousel-btn" id="prevBtn"><i class="fas fa-chevron-left"></i></button>
+                    <div class="carousel-dots" id="carouselDots"></div>
+                    <button class="carousel-btn" id="nextBtn"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+        </section>
+
+        <section class="download-section">
+            <div class="download-header">
+                <h2 class="download-title">DOWNLOAD</h2>
+                <a href="https://whitehousepage.github.io/NexcordBasic" class="free-button" target="_blank">
+                    <i class="fas fa-download"></i> Nexcord Free
+                </a>
+            </div>
+            
+            <div class="download-wrapper">
+                <button class="dropdown-trigger" id="dropdownTriggerBtn">
+                    <span><i class="fas fa-download"></i> DOWNLOAD OPTIONS</span>
+                    <i class="fas fa-chevron-down" id="dropdownArrow"></i>
+                </button>
+                
+                <div class="download-dropdown" id="downloadDropdown">
+                    <div class="download-options-grid">
+                        <div class="download-option">
+                            <h3 class="option-title">
+                                <i class="fas fa-crown"></i> NexcordPlus.exe
+                            </h3>
+                            <p class="option-desc">Direct launcher executable. Latest stable build, lightweight, ready to run. Requires license key.</p>
+                            <div class="button-group">
+                                <a href="https://www.dropbox.com/scl/fi/ssincrtspnhxw1oygcx0l/NexCordPlusLauncher.exe?rlkey=mnfjyj35q7tsxv5f2t0ler941&st=c05i3lsb&dl=1" class="download-link" download>
+                                    <i class="fas fa-download"></i> DOWNLOAD (.EXE)
+                                </a>
+                                <a href="https://discord.gg/sMEkW6M4MQ" target="_blank" class="key-link">
+                                    <i class="fas fa-key"></i> GET A KEY
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <div class="download-option">
+                            <h3 class="option-title">
+                                <i class="fab fa-github"></i> GitHub Repository
+                            </h3>
+                            <p class="option-desc">Official premium repository. View source code, report issues, and track development.</p>
+                            <a href="https://github.com/DaNexoo/NexcordPlus/" target="_blank" class="github-link">
+                                <i class="fab fa-github"></i> OPEN GITHUB
+                            </a>
+                        </div>
+                        
+                        <div class="download-option">
+                            <h3 class="option-title">
+                                <i class="fas fa-file-archive"></i> Nexcord+ 2.8.6.zip
+                            </h3>
+                            <p class="option-desc">Complete package. Includes launcher, dependencies, and quick-start guide.</p>
+                            <a href="https://www.dropbox.com/scl/fi/ssincrtspnhxw1oygcx0l/NexCordPlusLauncher.exe?rlkey=mnfjyj35q7tsxv5f2t0ler941&st=c05i3lsb&dl=1" class="download-link" download>
+                                <i class="fas fa-download"></i> DOWNLOAD (.ZIP)
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div>
+                <div class="footer-logo">
+                    <img src="wh.png" alt="White House Logo" class="footer-logo-img">
+                </div>
+                <p style="color: var(--text-tertiary); margin-bottom: 20px; font-size: 0.9rem; line-height: 1.7;">White House is a professional digital tools collective. We develop premium and open-source utilities with a focus on quality and performance.</p>
+                <div style="display: flex; gap: 20px; justify-content: center;">
+                    <a href="https://github.com/danexoo/" target="_blank" style="color: var(--text-tertiary); font-size: 1.4rem; transition: all 0.3s ease;"><i class="fab fa-github"></i></a>
+                    <a href="https://discord.gg/sMEkW6M4MQ" target="_blank" style="color: var(--text-tertiary); font-size: 1.4rem; transition: all 0.3s ease;"><i class="fab fa-discord"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-links">
+                <h4>Navigation</h4>
+                <ul>
+                    <li><a href="https://whitehousepage.github.io/">Home</a></li>
+                    <li><a href="https://whitehousepage.github.io/#tools">Tools</a></li>
+                    <li><a href="https://whitehousepage.github.io/#about">About</a></li>
+                    <li><a href="https://discord.gg/sMEkW6M4MQ" target="_blank">Join Discord</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-links">
+                <h4>Products</h4>
+                <ul>
+                    <li><a href="#">WHASH (Password Cracker)</a></li>
+                    <li><a href="https://whitehousepage.github.io/NexcordBasic">Nexcord Basic (Free)</a></li>
+                    <li><a href="#">Nexcord Plus (Premium)</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            © 2026 WHITE HOUSE — ENGINEERED BY NEXOO. ALL RIGHTS RESERVED.
+        </div>
+    </footer>
+
+    <script>
+        (function() {
+            const loadingScreen = document.getElementById('loadingScreen');
+            const pausedModal = document.getElementById('pausedModal');
+            const pausedModalClose = document.getElementById('pausedModalClose');
+            const pausedModalOk = document.getElementById('pausedModalOk');
+            const statusBadge = document.getElementById('statusBadge');
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const mobileMenu = document.getElementById('mobileMenu');
+            const mobileCloseBtn = document.getElementById('mobileCloseBtn');
+            const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+            const dropdownTriggerBtn = document.getElementById('dropdownTriggerBtn');
+            const downloadDropdown = document.getElementById('downloadDropdown');
+            const dropdownArrow = document.getElementById('dropdownArrow');
+            
+            const images = [
+                'https://files.catbox.moe/nvcwzs.png',
+                'https://files.catbox.moe/dbotb2.png',
+                'https://files.catbox.moe/aob6eg.png'
+            ];
+            
+            let currentIndex = 0;
+            const screenshotImg = document.getElementById('screenshotImage');
+            const carouselDots = document.getElementById('carouselDots');
+            let autoSlideInterval;
+
+            function preloadImages() {
+                images.forEach(src => {
+                    const img = new Image();
+                    img.src = src;
+                });
+            }
+
+            function createDots() {
+                carouselDots.innerHTML = '';
+                images.forEach((_, index) => {
+                    const dot = document.createElement('button');
+                    dot.classList.add('carousel-dot');
+                    if (index === currentIndex) dot.classList.add('active');
+                    dot.addEventListener('click', () => {
+                        currentIndex = index;
+                        updateScreenshot();
+                        resetAutoSlide();
+                    });
+                    carouselDots.appendChild(dot);
+                });
+            }
+
+            function updateScreenshot() {
+                screenshotImg.src = images[currentIndex];
+                updateDots();
+            }
+
+            function updateDots() {
+                const dots = document.querySelectorAll('.carousel-dot');
+                dots.forEach((dot, index) => {
+                    dot.classList.toggle('active', index === currentIndex);
+                });
+            }
+
+            function nextSlide() {
+                currentIndex = (currentIndex + 1) % images.length;
+                updateScreenshot();
+            }
+
+            function prevSlide() {
+                currentIndex = (currentIndex - 1 + images.length) % images.length;
+                updateScreenshot();
+            }
+
+            function startAutoSlide() {
+                autoSlideInterval = setInterval(nextSlide, 2000);
+            }
+
+            function resetAutoSlide() {
+                clearInterval(autoSlideInterval);
+                startAutoSlide();
+            }
+
+            preloadImages();
+
+            setTimeout(() => {
+                loadingScreen.classList.add('hidden');
+                setTimeout(() => {
+                    pausedModal.classList.add('active');
+                }, 400);
+            }, 1800);
+
+            function closePausedModal() {
+                pausedModal.classList.remove('active');
+            }
+
+            function toggleMobileMenu() {
+                mobileMenu.classList.toggle('active');
+                mobileMenuOverlay.classList.toggle('active');
+                document.body.classList.toggle('no-scroll');
+            }
+
+            function toggleDropdown(e) {
+                e.preventDefault();
+                downloadDropdown.classList.toggle('show');
+                dropdownTriggerBtn.classList.toggle('active');
+                dropdownArrow.style.transform = downloadDropdown.classList.contains('show') ? 'rotate(180deg)' : 'rotate(0deg)';
+            }
+
+            pausedModalClose.addEventListener('click', closePausedModal);
+            pausedModalOk.addEventListener('click', closePausedModal);
+            statusBadge.addEventListener('click', () => pausedModal.classList.add('active'));
+            
+            pausedModal.addEventListener('click', (e) => {
+                if (e.target === pausedModal) closePausedModal();
+            });
+
+            mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+            mobileCloseBtn.addEventListener('click', toggleMobileMenu);
+            mobileMenuOverlay.addEventListener('click', toggleMobileMenu);
+
+            dropdownTriggerBtn.addEventListener('click', toggleDropdown);
+            
+            document.addEventListener('click', function(e) {
+                if (downloadDropdown.classList.contains('show') && 
+                    !dropdownTriggerBtn.contains(e.target) && 
+                    !downloadDropdown.contains(e.target)) {
+                    downloadDropdown.classList.remove('show');
+                    dropdownTriggerBtn.classList.remove('active');
+                    dropdownArrow.style.transform = 'rotate(0deg)';
+                }
+            });
+
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 767 && mobileMenu.classList.contains('active')) {
+                    toggleMobileMenu();
+                }
+            });
+
+            document.getElementById('nextBtn').addEventListener('click', () => {
+                nextSlide();
+                resetAutoSlide();
+            });
+            
+            document.getElementById('prevBtn').addEventListener('click', () => {
+                prevSlide();
+                resetAutoSlide();
+            });
+
+            screenshotImg.addEventListener('mouseenter', function() {
+                this.style.transform = 'scale(1.02)';
+                this.style.borderColor = 'var(--gold-primary)';
+                this.style.boxShadow = '0 0 70px var(--gold-glow)';
+            });
+            
+            screenshotImg.addEventListener('mouseleave', function() {
+                this.style.transform = 'scale(1)';
+                this.style.borderColor = 'rgba(255, 215, 0, 0.5)';
+                this.style.boxShadow = '0 0 40px rgba(255, 215, 0, 0.4)';
+            });
+
+            createDots();
+            startAutoSlide();
+        })();
+    </script>
+</body>
+</html>
