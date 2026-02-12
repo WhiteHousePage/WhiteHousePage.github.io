@@ -100,7 +100,9 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            position: relative;
+            justify-content: center;
+            width: 100%;
+            text-align: center;
         }
 
         .loading-icon {
@@ -118,6 +120,8 @@
             color: var(--text-primary);
             text-transform: uppercase;
             position: relative;
+            text-align: center;
+            width: 100%;
         }
 
         .loading-dots {
@@ -181,7 +185,7 @@
             letter-spacing: 2px;
             padding: 8px 16px;
             border-radius: 4px;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.3s ease;
             position: relative;
             text-transform: uppercase;
         }
@@ -190,23 +194,6 @@
             color: var(--text-primary);
             text-shadow: 0 0 8px var(--accent-glow);
             background: rgba(255, 255, 255, 0.05);
-            transform: translateY(-2px);
-        }
-
-        .desktop-nav a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            width: 0;
-            height: 2px;
-            background: var(--accent-white);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            transform: translateX(-50%);
-        }
-
-        .desktop-nav a:hover::after {
-            width: 70%;
         }
 
         .status-badge {
@@ -350,12 +337,12 @@
             width: 22px;
             text-align: center;
             font-size: 1.2rem;
-            color: var(--accent-white);
+            color: var(--red-primary);
         }
 
         .mobile-menu-link:hover {
-            background: rgba(255, 255, 255, 0.1);
-            border-color: rgba(255, 255, 255, 0.3);
+            background: rgba(255, 26, 26, 0.1);
+            border-color: var(--red-primary);
             transform: translateX(8px);
         }
 
@@ -722,8 +709,8 @@
             display: inline-block;
             padding: 12px 28px;
             background: transparent;
-            color: var(--text-primary);
-            border: 2px solid var(--text-secondary);
+            color: var(--red-primary);
+            border: 2px solid var(--red-primary);
             border-radius: 8px;
             text-decoration: none;
             font-weight: 700;
@@ -734,8 +721,8 @@
         }
 
         .github-link:hover {
-            background: rgba(255, 255, 255, 0.1);
-            border-color: var(--text-primary);
+            background: rgba(255, 26, 26, 0.15);
+            box-shadow: 0 0 30px var(--red-glow);
             transform: translateY(-3px);
         }
 
@@ -789,7 +776,7 @@
             left: 0;
             width: 40px;
             height: 2px;
-            background: var(--text-secondary);
+            background: var(--red-primary);
         }
 
         .footer-links ul {
@@ -809,8 +796,9 @@
         }
 
         .footer-links a:hover {
-            color: var(--text-primary);
+            color: var(--red-primary);
             transform: translateX(8px);
+            text-shadow: 0 0 8px var(--red-dim);
         }
 
         .copyright {
@@ -829,8 +817,8 @@
             width: 100%;
             height: 100%;
             background: rgba(0, 0, 0, 0.95);
-            backdrop-filter: blur(30px);
-            -webkit-backdrop-filter: blur(30px);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             z-index: 99999;
             display: flex;
             justify-content: center;
@@ -838,6 +826,7 @@
             opacity: 0;
             visibility: hidden;
             transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            padding: 15px;
         }
 
         .inactive-modal.active {
@@ -848,14 +837,16 @@
         .inactive-modal-content {
             background: rgba(10, 10, 10, 0.98);
             border: 2px solid var(--orange-primary);
-            border-radius: 24px;
-            padding: 30px;
+            border-radius: 20px;
+            padding: 25px;
             max-width: 500px;
-            width: 90%;
+            width: 100%;
             position: relative;
-            box-shadow: 0 0 70px var(--orange-glow);
+            box-shadow: 0 0 50px var(--orange-glow);
             transform: scale(0.9);
             transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            max-height: 90vh;
+            overflow-y: auto;
         }
 
         .inactive-modal.active .inactive-modal-content {
@@ -866,14 +857,17 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 10px;
         }
 
         .inactive-modal-title {
             color: var(--orange-primary);
-            font-size: 1.6rem;
-            text-shadow: 0 0 25px var(--orange-glow);
+            font-size: 1.4rem;
+            text-shadow: 0 0 20px var(--orange-glow);
             letter-spacing: 3px;
+            word-break: break-word;
         }
 
         .inactive-modal-close {
@@ -889,6 +883,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            flex-shrink: 0;
         }
 
         .inactive-modal-close:hover {
@@ -899,28 +894,38 @@
 
         .inactive-modal-body {
             color: var(--text-primary);
-            line-height: 1.7;
-            margin-bottom: 25px;
+            line-height: 1.6;
+            margin-bottom: 20px;
             font-size: 0.95rem;
         }
 
         .inactive-warning {
             background: rgba(255, 158, 0, 0.08);
             border-left: 4px solid var(--orange-primary);
-            padding: 18px;
+            padding: 15px;
             border-radius: 8px;
-            margin-top: 20px;
+            margin-top: 15px;
+        }
+
+        .inactive-warning ul {
+            margin-left: 18px;
+            margin-top: 8px;
+            font-size: 0.85rem;
+        }
+
+        .inactive-warning li {
+            margin-bottom: 5px;
         }
 
         .inactive-modal-footer {
             text-align: center;
-            padding-top: 20px;
+            padding-top: 15px;
             border-top: 1px solid rgba(255, 158, 0, 0.2);
         }
 
         .inactive-modal-button {
             display: inline-block;
-            padding: 12px 35px;
+            padding: 12px 30px;
             background: transparent;
             color: var(--orange-primary);
             border: 2px solid var(--orange-primary);
@@ -929,8 +934,10 @@
             font-weight: 700;
             cursor: pointer;
             transition: all 0.3s ease;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             letter-spacing: 2px;
+            width: auto;
+            min-width: 160px;
         }
 
         .inactive-modal-button:hover {
@@ -982,35 +989,31 @@
             .tool-title {
                 font-size: 4rem;
             }
-            
             .tool-subtitle {
                 font-size: 1.2rem;
             }
-            
             .section-title {
                 font-size: 2.5rem;
             }
-            
             .footer-content {
                 grid-template-columns: repeat(3, 1fr);
                 gap: 60px;
                 text-align: left;
             }
-            
             .footer-logo {
                 justify-content: flex-start;
             }
-            
             .download-options-grid {
                 gap: 25px;
             }
-            
             .desktop-nav {
                 display: flex;
             }
-            
             .status-badge {
                 margin-right: 0;
+            }
+            .inactive-modal-title {
+                font-size: 1.6rem;
             }
         }
 
@@ -1018,86 +1021,85 @@
             .desktop-nav {
                 display: none;
             }
-            
             .mobile-menu-btn {
                 display: block;
             }
-            
             .navbar {
                 padding: 15px 20px;
             }
-            
             .logo {
                 font-size: 1.3rem;
             }
-            
             .logo-img {
                 width: 35px;
                 height: 35px;
             }
-            
             .status-badge {
                 padding: 8px 16px;
                 font-size: 0.7rem;
             }
-            
             .hero-section {
                 padding: 50px 15px 30px;
             }
-            
             .tool-title {
                 font-size: 2.2rem;
             }
-            
             .tool-description {
                 padding: 20px;
             }
-            
             .screenshot-section {
                 padding: 50px 15px;
             }
-            
             .section-title {
                 font-size: 1.8rem;
             }
-            
             .download-section {
                 padding: 40px 15px 60px;
             }
-            
             .download-title {
                 font-size: 1.8rem;
             }
-            
             .dropdown-trigger {
                 padding: 18px 20px;
                 font-size: 1.1rem;
             }
-            
             .download-option {
                 padding: 20px;
             }
-            
             .option-title {
                 font-size: 1.1rem;
             }
-            
             .button-group {
                 flex-direction: column;
                 width: 100%;
             }
-            
             .download-link, .view-raw-link, .github-link {
                 width: 100%;
             }
-            
             .plus-button {
                 padding: 10px 20px;
                 font-size: 0.8rem;
             }
-            
             .download-header {
                 gap: 15px;
+            }
+            .inactive-modal-content {
+                padding: 20px;
+                max-height: 80vh;
+            }
+            .inactive-modal-title {
+                font-size: 1.2rem;
+            }
+            .inactive-modal-body {
+                font-size: 0.85rem;
+            }
+            .inactive-warning ul {
+                font-size: 0.8rem;
+            }
+            .inactive-modal-button {
+                padding: 10px 20px;
+                font-size: 0.85rem;
+                min-width: 140px;
             }
         }
 
@@ -1105,52 +1107,61 @@
             .tool-title {
                 font-size: 1.8rem;
             }
-            
             .tool-subtitle {
                 font-size: 0.9rem;
             }
-            
             .tool-description p {
                 font-size: 0.85rem;
             }
-            
             .section-title {
                 font-size: 1.5rem;
             }
-            
             .download-title {
                 font-size: 1.5rem;
             }
-            
             .download-header {
                 flex-direction: column;
                 gap: 12px;
             }
-            
             .plus-button {
                 width: 100%;
                 justify-content: center;
             }
-            
             .dropdown-trigger {
                 font-size: 0.95rem;
                 padding: 15px;
             }
-            
             .dropdown-trigger i:last-child {
                 font-size: 1.2rem;
             }
-            
             .inactive-modal-content {
-                padding: 20px;
+                padding: 18px;
             }
-            
             .inactive-modal-title {
-                font-size: 1.2rem;
+                font-size: 1.1rem;
+                letter-spacing: 2px;
             }
-            
             .inactive-modal-body {
-                font-size: 0.85rem;
+                font-size: 0.8rem;
+            }
+            .inactive-warning {
+                padding: 12px;
+            }
+            .inactive-warning ul {
+                margin-left: 15px;
+            }
+            .inactive-modal-button {
+                padding: 10px 18px;
+                font-size: 0.8rem;
+                min-width: 120px;
+            }
+            .loading-icon {
+                width: 100px;
+                height: 100px;
+            }
+            .loading-text {
+                font-size: 1.3rem;
+                letter-spacing: 5px;
             }
         }
     </style>
@@ -1174,10 +1185,9 @@
             <div class="inactive-modal-body">
                 <p><strong>Nexcord Basic is no longer under active development.</strong></p>
                 <p>This project has been discontinued and will not receive any updates, bug fixes, or new features in the near future.</p>
-                
                 <div class="inactive-warning">
                     <p><strong>Important Information:</strong></p>
-                    <ul style="margin-left: 20px; margin-top: 10px; font-size: 0.9rem;">
+                    <ul>
                         <li>No further development planned</li>
                         <li>No bug fixes will be released</li>
                         <li>No new features will be added</li>
@@ -1185,7 +1195,6 @@
                         <li>Use at your own risk</li>
                     </ul>
                 </div>
-                
                 <p style="margin-top: 15px;">The tool is provided "as-is" for educational purposes only. Consider using alternative tools or the premium version (Nexcord Plus) for active development and support.</p>
             </div>
             <div class="inactive-modal-footer">
@@ -1212,7 +1221,7 @@
         
         <div style="display: flex; align-items: center; gap: 15px;">
             <div class="status-badge" id="statusBadge">
-                INACTIVE TOOL
+                INACTIVE
             </div>
             <button class="mobile-menu-btn" id="mobileMenuBtn">
                 <i class="fas fa-bars"></i>
@@ -1224,6 +1233,7 @@
         <div class="mobile-menu-header">
             <div style="display: flex; align-items: center;">
                 <img src="wh.png" alt="Logo">
+                <span style="font-size: 1.2rem; margin-left: 10px; font-weight: bold; color: white;">WHITE HOUSE</span>
             </div>
             <button class="mobile-close-btn" id="mobileCloseBtn">
                 <i class="fas fa-times"></i>
@@ -1254,9 +1264,7 @@
             
             <div class="tool-description">
                 <p><strong class="highlight-red">Nexcord Basic</strong> is a professional-grade Discord tool developed in 2023 by <strong class="highlight-red">Nexoo</strong>, founder and owner of White House. Originally created as a lightweight alternative, Nexcord Basic evolved into a powerful open-source solution for server management and utility operations.</p>
-                
-                <p>As an <strong class="highlight-red">open-source project</strong>, Nexcord Basic is provided freely to the community. While certain parts of the script were refined using AI assistance due to Nexoo's non-native English proficiency, the core functionality remains authentic and community-focused. <strong class="highlight-red">Version 2025</strong> is a realistic release — expect bugs, experimental features, and raw performance. This is not a polished paid product; this is real development.</p>
-                
+                <p>As an <strong class="highlight-red">open-source project</strong>, Nexcord Basic is provided freely to the community. <strong class="highlight-red">Version 2025</strong> is a realistic release — expect bugs, experimental features, and raw performance. This is not a polished paid product; this is real development.</p>
                 <p><strong class="highlight-red">Nexcord Basic</strong> serves as a robust free alternative to <strong>Nexcord+</strong> (the premium paid version). We believe in accessibility first. All tools are provided as-is with full transparency. Built by Nexoo, maintained by the White House team, and powered by the community.</p>
             </div>
         </section>
@@ -1264,7 +1272,7 @@
         <section class="screenshot-section">
             <h2 class="section-title">SCREENSHOT</h2>
             <div class="screenshot-container">
-                <img src="ssnexcord.png" alt="Nexcord Basic Screenshot" class="screenshot-image" id="screenshotImage">
+                <img src="https://www.dropbox.com/scl/fi/9hgwzbhf15xb49ibew2q6/image.png?rlkey=81yhw7gfjxjdvmq4ytewe0mmy&st=f1v3ljui&dl=1" alt="Nexcord Basic Screenshot" class="screenshot-image" id="screenshotImage">
                 <div class="single-indicator">
                     <div class="indicator-single"></div>
                 </div>
@@ -1293,11 +1301,11 @@
                             </h3>
                             <p class="option-desc">Direct Python script file. Latest stable build, self-contained, ready to execute.</p>
                             <div class="button-group">
-                                <a href="Nexcord.py" class="download-link" download>
+                                <a href="https://www.dropbox.com/scl/fi/onkgww3g86615wwi6fyub/Nexcord.py?rlkey=u6ca65djb0wgnon3du2jqv50a&st=gukw8pdr&dl=1" class="download-link" download>
                                     <i class="fas fa-download"></i> DOWNLOAD (.PY)
                                 </a>
-                                <a href="https://files.catbox.moe/vdui9s.py" class="view-raw-link" target="_blank">
-                                    <i class="fas fa-code"></i> VIEW RAW .PY
+                                <a href="https://www.dropbox.com/scl/fi/onkgww3g86615wwi6fyub/Nexcord.py?rlkey=u6ca65djb0wgnon3du2jqv50a&st=gukw8pdr&dl=1" class="view-raw-link" target="_blank">
+                                    <i class="fas fa-code"></i> VIEW RAW
                                 </a>
                             </div>
                         </div>
@@ -1317,7 +1325,7 @@
                                 <i class="fas fa-file-archive"></i> Nexcord-Basic-2.1.1.zip
                             </h3>
                             <p class="option-desc">Complete package. Includes Python script, dependencies list, and quick-start guide.</p>
-                            <a href="wh-Nexcord-2.1.1.zip" class="download-link" download>
+                            <a href="https://www.dropbox.com/scl/fi/h174r3l63cqnljzrb9dtw/wh-nexcord-2.1.1.zip?rlkey=dkqy10zp6sseqwg72toe2rs7k&st=1egfez7s&dl=1" class="download-link" download>
                                 <i class="fas fa-download"></i> DOWNLOAD (.ZIP)
                             </a>
                         </div>
@@ -1380,6 +1388,13 @@
             const downloadDropdown = document.getElementById('downloadDropdown');
             const dropdownArrow = document.getElementById('dropdownArrow');
 
+            setTimeout(() => {
+                loadingScreen.classList.add('hidden');
+                setTimeout(() => {
+                    inactiveModal.classList.add('active');
+                }, 400);
+            }, 1800);
+
             function closeInactiveModal() {
                 inactiveModal.classList.remove('active');
             }
@@ -1394,48 +1409,32 @@
                 e.preventDefault();
                 downloadDropdown.classList.toggle('show');
                 dropdownTriggerBtn.classList.toggle('active');
-                
-                if (downloadDropdown.classList.contains('show')) {
-                    dropdownArrow.style.transform = 'rotate(180deg)';
-                } else {
+                dropdownArrow.style.transform = downloadDropdown.classList.contains('show') ? 'rotate(180deg)' : 'rotate(0deg)';
+            }
+
+            inactiveModalClose.addEventListener('click', closeInactiveModal);
+            inactiveModalOk.addEventListener('click', closeInactiveModal);
+            statusBadge.addEventListener('click', () => inactiveModal.classList.add('active'));
+            
+            inactiveModal.addEventListener('click', (e) => {
+                if (e.target === inactiveModal) closeInactiveModal();
+            });
+
+            mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+            mobileCloseBtn.addEventListener('click', toggleMobileMenu);
+            mobileMenuOverlay.addEventListener('click', toggleMobileMenu);
+
+            dropdownTriggerBtn.addEventListener('click', toggleDropdown);
+            
+            document.addEventListener('click', function(e) {
+                if (downloadDropdown.classList.contains('show') && 
+                    !dropdownTriggerBtn.contains(e.target) && 
+                    !downloadDropdown.contains(e.target)) {
+                    downloadDropdown.classList.remove('show');
+                    dropdownTriggerBtn.classList.remove('active');
                     dropdownArrow.style.transform = 'rotate(0deg)';
                 }
-            }
-
-            setTimeout(() => {
-                loadingScreen.classList.add('hidden');
-                setTimeout(() => {
-                    inactiveModal.classList.add('active');
-                }, 400);
-            }, 1800);
-
-            if (inactiveModalClose) inactiveModalClose.addEventListener('click', closeInactiveModal);
-            if (inactiveModalOk) inactiveModalOk.addEventListener('click', closeInactiveModal);
-            if (statusBadge) statusBadge.addEventListener('click', () => inactiveModal.classList.add('active'));
-            
-            if (inactiveModal) {
-                inactiveModal.addEventListener('click', (e) => {
-                    if (e.target === inactiveModal) closeInactiveModal();
-                });
-            }
-
-            if (mobileMenuBtn) mobileMenuBtn.addEventListener('click', toggleMobileMenu);
-            if (mobileCloseBtn) mobileCloseBtn.addEventListener('click', toggleMobileMenu);
-            if (mobileMenuOverlay) mobileMenuOverlay.addEventListener('click', toggleMobileMenu);
-
-            if (dropdownTriggerBtn && downloadDropdown) {
-                dropdownTriggerBtn.addEventListener('click', toggleDropdown);
-                
-                document.addEventListener('click', function(e) {
-                    if (downloadDropdown.classList.contains('show') && 
-                        !dropdownTriggerBtn.contains(e.target) && 
-                        !downloadDropdown.contains(e.target)) {
-                        downloadDropdown.classList.remove('show');
-                        dropdownTriggerBtn.classList.remove('active');
-                        dropdownArrow.style.transform = 'rotate(0deg)';
-                    }
-                });
-            }
+            });
 
             window.addEventListener('resize', function() {
                 if (window.innerWidth > 767 && mobileMenu.classList.contains('active')) {
@@ -1443,20 +1442,16 @@
                 }
             });
 
-            window.addEventListener('load', function() {
-                const screenshot = document.getElementById('screenshotImage');
-                if (screenshot) {
-                    screenshot.addEventListener('mouseenter', function() {
-                        this.style.transform = 'scale(1.02)';
-                        this.style.borderColor = 'var(--red-primary)';
-                        this.style.boxShadow = '0 0 70px var(--red-glow)';
-                    });
-                    screenshot.addEventListener('mouseleave', function() {
-                        this.style.transform = 'scale(1)';
-                        this.style.borderColor = 'rgba(255, 26, 26, 0.5)';
-                        this.style.boxShadow = '0 0 40px rgba(255, 26, 26, 0.4)';
-                    });
-                }
+            const screenshot = document.getElementById('screenshotImage');
+            screenshot.addEventListener('mouseenter', function() {
+                this.style.transform = 'scale(1.02)';
+                this.style.borderColor = 'var(--red-primary)';
+                this.style.boxShadow = '0 0 70px var(--red-glow)';
+            });
+            screenshot.addEventListener('mouseleave', function() {
+                this.style.transform = 'scale(1)';
+                this.style.borderColor = 'rgba(255, 26, 26, 0.5)';
+                this.style.boxShadow = '0 0 40px rgba(255, 26, 26, 0.4)';
             });
         })();
     </script>
